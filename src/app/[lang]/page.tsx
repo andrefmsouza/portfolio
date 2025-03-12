@@ -321,7 +321,7 @@ export default function Home({ params }: Props) {
         </section> */}
         
         <section id="contact">
-          <div className="flex flex-row w-full min-h-screen justify-center items-center">
+          <div className="flex flex-row w-full min-h-screen pt-50 sm:pt-30 justify-center items-center">
             <div className="flex flex-col w-full max-w-300 min-h-screen md:flex-row md:justify-center items-center">
               <div className="flex flex-col md:flex-1 mb-10 md:mb-0 space-y-5 mx-4">
                 <h2 className="text-5xl font-bold">{t('contact')}</h2>
