@@ -1,23 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FFFAFA;
   --foreground: #171717;
+
+  --dark-gray: #1A1A1A;
+  --light-gray: #F0F0F0;
+
+  --menu: #F0F0F0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-nunito: var(--font-nunito);
+
+  --color-dark-orange: #FF7800;
+  --color-light-orange: #FFB300;
+  --color-dark-purple: #4F2184;
+  --color-light-purple: #7D5AA4;
+
+  --color-menu: var(--menu);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  html:not(.dark):not(.light) {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #FFFAFA;
+    --menu: #1A1A1A;
   }
 }
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #FFFAFA;
+  --menu: #1A1A1A;
+}
+
+* {
+  transition: background-color 0.05s ease-in-out, color 0.01s ease-in-out, border-color 0.05s ease-in-out;
+}
+
+.avatar {
+  animation: avatar 10s infinite;
+}
+
+@keyframes avatar{
+  
+	0% {
+		border-radius:60% 40% 30% 70% / 60% 30% 70% 40%
+	}
+  25%{
+		border-radius:30% 60% 70% 40% / 50% 60% 30%
+	}
+  50%{
+    border-radius:26% 36% 23% 61% / 35% 68% 22%
+  }
+  75%{
+    border-radius:65% 49% 49% 33% / 87% 54% 78% 27%
+  }
+  100%{
+    border-radius:60% 40% 30% 70% / 60% 30% 70% 40%
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 
 body {
   background: var(--background);

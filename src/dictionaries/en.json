@@ -1,0 +1,198 @@
+{
+  "menu-home": "Home",
+  "menu-skills": "Skills",
+  "menu-projects": "Projects",
+  "menu-journey": "Journey",
+  "menu-contact": "Contact",
+  "hello": "Hello, there!",
+  "name": "André Souza here!",
+  "description": "I'm a professional passionate about technology and innovation. With a background in Internet Systems and specializations in IT Management and Design Thinking, I always aim to create creative and strategic solutions. If you're looking for someone who combines technical skills, creativity, and strategic vision, you've come to the right place!",
+  "skills": "Skills",
+  "skills-description": "Technologies and tools that I've been working with along my journey.",
+  "journey": "My journey",
+  "journey-description": "I have been a full-stack developer since 2013, with experience in internal software development, system integration, and ERP. I worked at Rivelli Alimentos and currently serve as a senior developer at iScholar, where I focus on creating new products and integrations. I also engage in parallel projects, always seeking innovation and efficiency in software development.", 
+  "work-experience": "Work experience",
+  "work-experience-list": [
+    {
+      "id": 1,
+      "company": "iScholar",
+      "period": "2020 - Present",
+      "role": "Senior Developer",
+      "description": [
+        "Developed new products using AWS, PHP, JavaScript, React, Node.js, MySQL, DynamoDB, AngularJS, Ionic, Capacitor, among other technologies.",
+        "Winner of the Best of the Year 2023 award in the Innovation and Creativity category.",
+        "Implemented integrations with partner systems through REST APIs and Webhooks.",
+        "Created interactive dashboards for monitoring indicators and KPIs.",
+        "Worked on project documentation and software architecture definition.",
+        "Actively participated in requirements definition and process improvement.",
+        "Led the launch of applications on the App Store and Google Play."
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Universo Cultural",
+      "period": "2023 - 2024",
+      "role": "IT Instructor",
+      "description": [
+        "Taught Basic Computing and Microsoft Office Suite classes, focusing on professional training for the job market."
+      ]
+    },
+    {
+      "id": 3,
+      "company": "Rivelli Alimentos",
+      "period": "2020 - 2020",
+      "role": "Data Migration and ERP SAP Integration",
+      "description": [
+        "Performed data migration from the legacy system to ERP SAP, including extraction, cleaning, and conversion of information to the new system.",
+        "Automated the process of exporting and generating import spreadsheets for ERP SAP.",
+        "Developed and worked on structuring integrated data models between SAP and business partners.",
+        "Assisted key users in requirements definition and project data collection."
+      ]
+    },
+    {
+      "id": 4,
+      "company": "Rivelli Alimentos",
+      "period": "2013 - 2020",
+      "role": "Web Developer",
+      "description": [
+        "Developed applications using PHP, JavaScript, MySQL, jQuery, AngularJS, Angular, Vue, Bootstrap, among other technologies.",
+        "Created over 40 applications from scratch for various sectors, including Purchasing, Sales, Logistics, Finance, Human Resources, Meat Processing, and Compliance.",
+        "Implemented integrations with legacy systems through SOAP, REST, and CSV files.",
+        "Developed Android and iOS applications using Ionic and Cordova.",
+        "Created touch-sensitive applications for interactive kiosks.",
+        "Developed interactive dashboards for monitoring indicators and KPIs.",
+        "Worked on requirements gathering and project documentation.",
+        "Actively contributed to project definitions and process improvements across company sectors.",
+        "Participated in automation projects using Arduino and Raspberry Pi."
+      ]
+    },
+    {
+      "id": 5,
+      "company": "IFET Campus Barbacena",
+      "period": "2011 - 2013",
+      "role": "Intern",
+      "description": [
+        "Performed maintenance on equipment and computer networks in the study and research laboratory.",
+        "Developed a Java-based management system for the laboratory, allowing students to access computers via library enrollment.",
+        "Created a network monitoring system that blocked access to inappropriate content websites.",
+        "Provided support to students, assisting them with Linux system usage."
+      ]
+    }
+  ],
+  "education": "Education and certifications ",  
+  "education-list": [
+    {
+      "id": 1,
+      "school": "IFET Campus Barbacena",
+      "period": "2009 - 2013",
+      "course": "Degree in Internet Systems",
+      "description": [
+        "Computer Architecture",
+        "Web Page Development",
+        "Mathematical Foundations of Computing",
+        "Basic Business Management",
+        "Instrumental Informatics",
+        "Technical Writing",
+        "Scientific and Technological Research Methodology",
+        "Operating Systems",
+        "Software Engineering",
+        "Programming Logic",
+        "Entrepreneurship",
+        "Project Management",
+        "Computer Networks",
+        "Data Structures I",
+        "Data Structures II",
+        "Programming Language",
+        "Communication Protocols",
+        "Distributed Systems",
+        "Distributed Operating Systems",
+        "Communication Theory",
+        "Web Services",
+        "Visual Programming Language",
+        "Object-Oriented Technology",
+        "Statistics",
+        "Information Systems Management",
+        "Computer Network Projects",
+        "TCP-IP and Routing",
+        "Mobile and Wireless Technologies",
+        "Systems Analysis",
+        "Database Systems Design"
+      ]
+    },
+    {
+      "id": 2,
+      "school": "Uptime",
+      "period": "2015",
+      "course": "Advanced English",
+      "description": []
+    },
+    {
+      "id": 3,
+      "school": "EFSET",
+      "period": "2023",
+      "course": "EF SET Certificate",
+      "description": [
+        "Reading C2 Proficient",
+        "Listening C1 Advanced"
+      ]
+    },
+    {
+      "id": 4,
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Postgraduate Degree in IT Management",
+      "description": [
+        "Entrepreneurship and Innovation",
+        "IT Project Management",
+        "Project Management",
+        "IT Management and Governance",
+        "Process Mapping and Management",
+        "E-Business",
+        "Logical Reasoning",
+        "Computer Networks and Security",
+        "Managerial Information Systems",
+        "Special Topics in IT"
+      ]
+    },
+    {
+      "id": 5,
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Postgraduate Degree in Digital Storytelling",
+      "description": [
+        "Art Direction",
+        "Mastering ChatGPT to Boost Productivity",
+        "Digital Photography",
+        "Graphic Visual Language",
+        "Digital Marketing",
+        "Means of Expression",
+        "Creative Process",
+        "Audiovisual Production and Editing",
+        "Screenwriting",
+        "Communication Techniques to Sell Your Idea and Conquer the World"
+      ]
+    },
+    {
+      "id": 6,
+      "school": "UniCesumar",
+      "period": "2018 - 2021",
+      "course": "Postgraduate Degree in Design Thinking and Creativity in Organizations",
+      "description": [
+        "Research and Practice Universe",
+        "Teaching and Research Methodology",
+        "Introduction to Creativity in the Organizational Environment",
+        "Creative and Collaborative Economy",
+        "Fundamentals of Design Thinking",
+        "Design Thinking in Practice",
+        "Gamification Applied to Business",
+        "Communication and Marketing in the Post-Digital Era",
+        "Agile Business Methodologies and Mind Maps",
+        "Design Thinking Applied to Branding",
+        "New Business Models"
+      ]
+    }
+  ],
+  "projects": "Projects",
+  "contact": "Contact me",
+  "contact-description": "How about we have a chat? I'm open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:andrefmsouza@icloud.com' class='underline'>andrefmsouza@icloud.com</a> or through my social media. Let's connect!"
+} 

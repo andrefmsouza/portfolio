@@ -1,0 +1,198 @@
+{
+  "menu-home": "Início",
+  "menu-skills": "Habilidades",
+  "menu-projects": "Projetos",
+  "menu-journey": "Jornada",
+  "menu-contact": "Contato",
+  "hello": "E aí, tudo certo?",
+  "name": "André Souza aqui!",
+  "description": "Sou um profissional apaixonado por tecnologia e inovação. Com formação em Sistemas para Internet e especializações em Gestão de TI e Design Thinking, busco sempre criar soluções criativas e estratégicas. Se você procura alguém que combine técnica, criatividade e visão estratégica, está no lugar certo!",
+  "skills": "Habilidades",
+  "skills-description": "Tecnologias e ferramentas com as quais venho trabalhando ao longo da minha jornada.",
+  "journey": "Minha trajetória",
+  "journey-description": "Sou desenvolvedor full stack desde 2013, com experiência no desenvolvimento de softwares internos, integração de sistemas e ERP. Atuei na Rivelli Alimentos e, atualmente, sou desenvolvedor sênior na iScholar, onde trabalho na criação de novos produtos e integrações. Também participo de projetos paralelos, sempre buscando inovação e eficiência no desenvolvimento de software.",
+  "work-experience": "Experiência profissional",
+  "work-experience-list": [
+    {
+      "id": 1,
+      "company": "iScholar",
+      "period": "2020 - Atualmente",
+      "role": "Desenvolvedor Sênior",
+      "description": [
+        "Desenvolvi novos produtos utilizando AWS, PHP, JavaScript, React, Node.js, MySQL, DynamoDB, AngularJS, Ionic, Capacitor, entre outras tecnologias.",
+        "Ganhador do prêmio de Melhores do Ano 2023 na categoria Inovação e Criatividade.",
+        "Implementei integrações com sistemas parceiros por meio de APIs REST e Webhooks.",
+        "Criei dashboards interativos para o monitoramento de indicadores e KPIs.",
+        "Atuei na documentação de projetos e na definição da arquitetura de software.",
+        "Participei ativamente da definição de requisitos e da melhoria de processos.",
+        "Conduzi o lançamento de aplicativos na App Store e Google Play."
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Universo Cultural",
+      "period": "2023 - 2024",
+      "role": "Instrutor de Informática",
+      "description": [
+        "Ministrei aulas de Informática Básica e Pacote Office, com foco na capacitação profissional para o mercado de trabalho."
+      ]
+    },
+    {
+      "id": 3,
+      "company": "Rivelli Alimentos",
+      "period": "2020 - 2020",
+      "role": "Migração de dados e integração com ERP SAP",
+      "description": [
+        "Realizei a migração de dados do sistema legado para o ERP SAP, incluindo extração, limpeza e conversão das informações para o novo sistema.",
+        "Automatizei o processo de exportação e geração de planilhas de importação para o ERP SAP.",
+        "Desenvolvi e trabalhei na estruturação de modelos de dados integrados entre o SAP e parceiros de negócios.",
+        "Auxiliei key users na definição de requisitos e no levantamento de dados para o projeto."
+      ]
+    },
+    {
+      "id": 4,
+      "company": "Rivelli Alimentos",
+      "period": "2013 - 2020",
+      "role": "Desenvolvedor Web",
+      "description": [
+        "Desenvolvi aplicativos utilizando PHP, JavaScript, MySQL, jQuery, AngularJS, Angular, Vue, Bootstrap, entre outras tecnologias.",
+        "Criei mais de 40 aplicações do zero para diversos setores, incluindo Compras, Vendas, Logística, Financeiro, Departamento Pessoal, Frigorífico e Compliance.",
+        "Implementei integrações com sistemas legados por meio de SOAP, REST e arquivos CSV.",
+        "Desenvolvi aplicativos Android e iOS utilizando Ionic e Cordova.",
+        "Criei aplicações sensíveis ao toque para uso em totens interativos.",
+        "Desenvolvi dashboards interativos para o monitoramento de indicadores e KPIs.",
+        "Atuei no levantamento de requisitos e na documentação de projetos.",
+        "Contribuí ativamente para definições de projetos e melhorias de processos nos setores da empresa.",
+        "Participei de projetos de automação utilizando Arduino e Raspberry Pi."
+      ]
+    },
+    {
+      "id": 5,
+      "company": "IFET Campus Barbacena",
+      "period": "2011 - 2013",
+      "role": "Estagiário",
+      "description": [
+        "Realizei a manutenção de equipamentos e redes de computadores no laboratório de estudos e pesquisa.",
+        "Desenvolvi um sistema de gerenciamento em Java para o laboratório, permitindo a liberação de computadores para alunos via matrícula da biblioteca.",
+        "Criei um sistema de monitoramento de rede que bloqueava o acesso a sites com conteúdo impróprio.",
+        "Prestei suporte aos alunos, auxiliando no uso do sistema Linux."
+      ]
+    }
+  ],
+  "education": "Estudos e Certificações",  
+  "education-list": [
+    {
+      "id": 1,
+      "school": "IFET Campus Barbacena",
+      "period": "2009 - 2013",
+      "course": "Graduação em Sistemas para Internet",
+      "description": [
+        "Arquitetura de Computadores",
+        "Desenvolvimentos de Páginas Web",
+        "Fundamentos Matemáticos da Computação",
+        "Gestão Empresarial Básica",
+        "Informática Instrumental",
+        "Redação Técnica",
+        "Metodologia de Pesquisa Científica e Tecnológica",
+        "Sistemas Operacionais",
+        "Engenharia de Software",
+        "Lógica de Programação",
+        "Empreendedorismo",
+        "Gestão de Projetos",
+        "Redes de Computadores",
+        "Estrutura de Dados I",
+        "Estrutura de Dados II",
+        "Linguagem de Programação",
+        "Protocolos de Comunicação",
+        "Sistemas Distribuídos",
+        "Sistemas Operacionais Distribuídos",
+        "Teoria da Comunicação",
+        "Web Services",
+        "Linguagem de Programação Visual",
+        "Tecnologia Orientada a Objetos",
+        "Estatística",
+        "Gerência de Sistemas de Informação",
+        "Projetos de Redes de Computadores",
+        "TCP-IP e Roteamento",
+        "Tecnologias Móveis e Sem Fio",
+        "Análise de Sistemas",
+        "Projeto de Sistemas de Banco de Dados"
+      ]
+    },
+    {
+      "id": 2,
+      "school": "Uptime",
+      "period": "2015",
+      "course": "Inglês Avançado",
+      "description": []
+    },
+    {
+      "id": 3,
+      "school": "EFSET",
+      "period": "2023",
+      "course": "EF SET Certificate",
+      "description": [
+        "Reading C2 Proficient",
+        "Listening C1 Advanced"
+      ]
+    },
+    {
+      "id": 4,
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Pós-Graduação em Gestão em TI",
+      "description": [
+        "Empreendedorismo e Inovação",
+        "Gerência de Projetos em TI",
+        "Gestão de Projetos",
+        "Gestão e Governança em TI",
+        "Mapeamento e Gerenciamento de Processos",
+        "Negócios Eletrônicos",
+        "Raciocínio Lógico",
+        "Redes de Computadores e Segurança",
+        "Sistema de Informação Gerencial",
+        "Tópicos Especiais em TI"
+      ]
+    },
+    {
+      "id": 5,
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Pós-Graduação em Storytelling Digital",
+      "description": [
+        "Direção de Arte",
+        "Dominar o ChatGPT para turbinar a produtividade",
+        "Fotografia Digital",
+        "Linguagem Visual Gráfica",
+        "Marketing Digital",
+        "Meios de Expressão",
+        "Processo Criativo",
+        "Produção e Edição de Audiovisual",
+        "Roteiros",
+        "Técnicas de Comunicação para Vender sua Ideia e Conquistar o Mundo"
+      ]
+    },
+    {
+      "id": 6,
+      "school": "UniCesumar",
+      "period": "2018 - 2021",
+      "course": "Pós-Graduação em Design Thinking e Criatividade nas Organizações",
+      "description": [
+        "Universo em pesquisa e prática",
+        "Metodologia do Ensino e da Pesquisa",
+        "Introdução a Criatividade no Ambiente Organizacional",
+        "Economia Criativa e Colaborativa",
+        "Fundamentos do Design Thinking",
+        "Design Thinking na Prática",
+        "Gamificação Aplicada aos Negócios",
+        "Comunicação e Marketing na Era Pós Digital",
+        "Metodologias Ágeis de Negócios e Mapas Metais",
+        "Design Thinking aplicado ao Branding",
+        "Novos Modelos de Negócio"
+      ]
+    }
+  ],
+  "projects": "Projetos",
+  "contact": "Chama aí",
+  "contact-description": "Que tal a gente trocar uma ideia? Estou aberto para conversar e explorar novas oportunidades. Pode me chamar no <a href='mailto:andrefmsouza@icloud.com' class='underline'>andrefmsouza@icloud.com</a> ou pelas minhas redes sociais. Vamos nos conectar!"
+} 
