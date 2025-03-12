@@ -171,7 +171,7 @@ export default function Home({ params }: Props) {
 
       <div className="container mx-auto px-10 max-w-[960px]">
         <section id="skills">
-          <div className="flex flex-col w-full min-h-screen pt-50 sm:pt-30">
+          <div className="flex flex-col w-full pt-50 sm:pt-30">
             <h1 className="text-4xl font-bold">{t('skills')}</h1>
             <p className="text-lg my-5 font-bold">{t('skills-description')}</p>
             <div className="mt-10" >
@@ -236,7 +236,7 @@ export default function Home({ params }: Props) {
         </section>
         
         <section id="journey">
-          <div className="flex flex-col w-full min-h-screen pt-50 sm:pt-30">
+          <div className="flex flex-col w-full pt-50 sm:pt-30">
             <h1 className="text-4xl font-bold">{t('journey')}</h1>
             <p className="text-lg my-5 font-bold">{t('journey-description')}</p>
 
@@ -321,20 +321,18 @@ export default function Home({ params }: Props) {
         </section> */}
         
         <section id="contact">
-          <div className="flex flex-row w-full min-h-screen pt-50 sm:pt-30 justify-center items-center">
-            <div className="flex flex-col w-full max-w-300 min-h-screen md:flex-row md:justify-center items-center">
-              <div className="flex flex-col md:flex-1 mb-10 md:mb-0 space-y-5 mx-4">
-                <h2 className="text-5xl font-bold">{t('contact')}</h2>
-                <p className="text-lg my-20 ms-0 md:ml-20" dangerouslySetInnerHTML={{ __html: t('contact-description') }}></p>
-                <div className="flex flex-row space-x-5 justify-center items-center mx-4">
-                  <Link href="https://www.linkedin.com/in/andrefmsouza/" target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin  className="text-5xl"/>
-                  </Link>
-                  <Link href="https://github.com/andrefmsouza" target="_blank" rel="noopener noreferrer">
-                    <FaGithub  className="text-5xl"/>
-                  </Link>
-                  <hr className="mr-4 hidden grow self-center border-t border-foreground/25 sm:block" />
-                </div>
+          <div className="flex flex-col pt-50 sm:pt-30 pb-50 w-full max-w-300 md:flex-row md:justify-center items-center">
+            <div className="flex flex-col md:flex-1 mb-10 md:mb-0 space-y-5 mx-4">
+              <h2 className="text-5xl font-bold">{t('contact')}</h2>
+              <p className="text-lg my-20 ms-0 md:ml-20" dangerouslySetInnerHTML={{ __html: t('contact-description') }}></p>
+              <div className="flex flex-row space-x-5 justify-center items-center mx-4">
+                <Link href="https://www.linkedin.com/in/andrefmsouza/" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin  className="text-5xl"/>
+                </Link>
+                <Link href="https://github.com/andrefmsouza" target="_blank" rel="noopener noreferrer">
+                  <FaGithub  className="text-5xl"/>
+                </Link>
+                <hr className="mr-4 hidden grow self-center border-t border-foreground/25 sm:block" />
               </div>
             </div>
           </div>
