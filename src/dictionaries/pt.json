@@ -138,6 +138,25 @@
     },
     {
       "id": 4,
+      "school": "UniCesumar",
+      "period": "2018 - 2021",
+      "course": "Pós-Graduação em Design Thinking e Criatividade nas Organizações",
+      "description": [
+        "Universo em pesquisa e prática",
+        "Metodologia do Ensino e da Pesquisa",
+        "Introdução a Criatividade no Ambiente Organizacional",
+        "Economia Criativa e Colaborativa",
+        "Fundamentos do Design Thinking",
+        "Design Thinking na Prática",
+        "Gamificação Aplicada aos Negócios",
+        "Comunicação e Marketing na Era Pós Digital",
+        "Metodologias Ágeis de Negócios e Mapas Metais",
+        "Design Thinking aplicado ao Branding",
+        "Novos Modelos de Negócio"
+      ]
+    },
+    {
+      "id": 5,
       "school": "UniFatecie",
       "period": "2024",
       "course": "Pós-Graduação em Gestão em TI",
@@ -155,7 +174,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "school": "UniFatecie",
       "period": "2024",
       "course": "Pós-Graduação em Storytelling Digital",
@@ -170,25 +189,6 @@
         "Produção e Edição de Audiovisual",
         "Roteiros",
         "Técnicas de Comunicação para Vender sua Ideia e Conquistar o Mundo"
-      ]
-    },
-    {
-      "id": 6,
-      "school": "UniCesumar",
-      "period": "2018 - 2021",
-      "course": "Pós-Graduação em Design Thinking e Criatividade nas Organizações",
-      "description": [
-        "Universo em pesquisa e prática",
-        "Metodologia do Ensino e da Pesquisa",
-        "Introdução a Criatividade no Ambiente Organizacional",
-        "Economia Criativa e Colaborativa",
-        "Fundamentos do Design Thinking",
-        "Design Thinking na Prática",
-        "Gamificação Aplicada aos Negócios",
-        "Comunicação e Marketing na Era Pós Digital",
-        "Metodologias Ágeis de Negócios e Mapas Metais",
-        "Design Thinking aplicado ao Branding",
-        "Novos Modelos de Negócio"
       ]
     }
   ],

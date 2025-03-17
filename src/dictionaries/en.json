@@ -138,6 +138,25 @@
     },
     {
       "id": 4,
+      "school": "UniCesumar",
+      "period": "2018 - 2021",
+      "course": "Postgraduate Degree in Design Thinking and Creativity in Organizations",
+      "description": [
+        "Research and Practice Universe",
+        "Teaching and Research Methodology",
+        "Introduction to Creativity in the Organizational Environment",
+        "Creative and Collaborative Economy",
+        "Fundamentals of Design Thinking",
+        "Design Thinking in Practice",
+        "Gamification Applied to Business",
+        "Communication and Marketing in the Post-Digital Era",
+        "Agile Business Methodologies and Mind Maps",
+        "Design Thinking Applied to Branding",
+        "New Business Models"
+      ]
+    },
+    {
+      "id": 5,
       "school": "UniFatecie",
       "period": "2024",
       "course": "Postgraduate Degree in IT Management",
@@ -155,7 +174,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "school": "UniFatecie",
       "period": "2024",
       "course": "Postgraduate Degree in Digital Storytelling",
@@ -170,25 +189,6 @@
         "Audiovisual Production and Editing",
         "Screenwriting",
         "Communication Techniques to Sell Your Idea and Conquer the World"
-      ]
-    },
-    {
-      "id": 6,
-      "school": "UniCesumar",
-      "period": "2018 - 2021",
-      "course": "Postgraduate Degree in Design Thinking and Creativity in Organizations",
-      "description": [
-        "Research and Practice Universe",
-        "Teaching and Research Methodology",
-        "Introduction to Creativity in the Organizational Environment",
-        "Creative and Collaborative Economy",
-        "Fundamentals of Design Thinking",
-        "Design Thinking in Practice",
-        "Gamification Applied to Business",
-        "Communication and Marketing in the Post-Digital Era",
-        "Agile Business Methodologies and Mind Maps",
-        "Design Thinking Applied to Branding",
-        "New Business Models"
       ]
     }
   ],
