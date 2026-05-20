@@ -4,16 +4,10 @@ import { useEffect, useState, use } from "react";
 import { useTranslations } from '@/hooks/useTranslations';
 import { useTheme } from '@/hooks/useTheme';
 import Image from 'next/image';
-import { TbBrandTypescript } from "react-icons/tb";
-
-
-import { FaAngular, FaArrowUp, FaBootstrap, FaCss3, FaGit, FaGithub, FaHtml5, FaLinkedin, FaNodeJs, FaPython, FaReact, FaSun, FaVuejs } from "react-icons/fa";
-import { RiJavascriptLine, RiNextjsFill, RiPhpLine, RiTailwindCssFill } from "react-icons/ri";
+import { FaArrowUp, FaGithub, FaLinkedin, FaSun } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
-import { SiArduino, SiMysql } from "react-icons/si";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { IoLogoFirebase } from "react-icons/io5";
 import { BsFillMoonStarsFill } from "react-icons/bs";
+import { SkillsBubbles } from "@/components/SkillsBubbles";
 import Link from "next/link";
 
 interface Props {
@@ -28,6 +22,24 @@ export default function Home({ params }: Props) {
   const { theme, toggleTheme } = useTheme();
 
   const [isVisible, setIsVisible] = useState(false);
+  const [expandedWork, setExpandedWork] = useState<Set<number>>(new Set());
+  const [expandedEducation, setExpandedEducation] = useState<Set<number>>(new Set());
+
+  function toggleWork(id: number) {
+    setExpandedWork(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
+
+  function toggleEducation(id: number) {
+    setExpandedEducation(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -174,63 +186,8 @@ export default function Home({ params }: Props) {
           <div className="flex flex-col w-full pt-50 sm:pt-30">
             <h1 className="text-4xl font-bold">{t('skills')}</h1>
             <p className="text-lg my-5 font-bold">{t('skills-description')}</p>
-            <div className="mt-10" >
-              <div className="w-full grid grid-cols-2 md:grid-cols-6 sm:grid-cols-3 gap-4">
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <FaNodeJs />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <RiPhpLine />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <FaPython />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <SiArduino />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <FaReact />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <FaHtml5 />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <FaCss3 />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <RiJavascriptLine  />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <TbBrandTypescript />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <FaAngular  />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <FaVuejs  />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <FaGit />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <RiNextjsFill />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <FaBootstrap />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <RiTailwindCssFill />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <SiMysql />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                 <BiLogoPostgresql />
-                </div>
-                <div className="bg-menu rounded-xl p-4 text-7xl flex justify-center items-center">
-                  <IoLogoFirebase />
-                </div>
-              </div>
+            <div className="mt-10">
+              <SkillsBubbles dragHint={t('skills-drag-hint')} />
             </div>
           </div>
         </section>
@@ -265,11 +222,19 @@ export default function Home({ params }: Props) {
                         {item.role}
                       </h4>
                       <div className="order-3 grow pl-6">
-                        <ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
-                          {item.description.map((activity: string) => (
-                            <li key={activity}>{activity}</li>
-                          ))}
-                        </ul>
+                        <button
+                          onClick={() => toggleWork(item.id)}
+                          className="text-sm font-semibold text-light-purple hover:underline mb-3 cursor-pointer"
+                        >
+                          {expandedWork.has(item.id) ? t('read-less') : t('read-more')}
+                        </button>
+                        {expandedWork.has(item.id) && (
+                          <ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
+                            {item.description.map((activity: string) => (
+                              <li key={activity}>{activity}</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </div>
                   </li>
@@ -302,11 +267,21 @@ export default function Home({ params }: Props) {
                         {item.course}
                       </h4>
                       <div className="order-3 grow pl-6">
-                        <ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
-                          {item.description.map((activity: string) => (
-                            <li key={activity}>{activity}</li>
-                          ))}
-                        </ul>
+                        {item.description.length > 0 && (
+                          <button
+                            onClick={() => toggleEducation(item.id)}
+                            className="text-sm font-semibold text-light-purple hover:underline mb-3 cursor-pointer"
+                          >
+                            {expandedEducation.has(item.id) ? t('read-less') : t('read-more')}
+                          </button>
+                        )}
+                        {expandedEducation.has(item.id) && (
+                          <ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
+                            {item.description.map((activity: string) => (
+                              <li key={activity}>{activity}</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </div>
                   </li>

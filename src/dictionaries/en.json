@@ -6,76 +6,76 @@
   "menu-contact": "Contact",
   "hello": "Hello, there!",
   "name": "André Souza here!",
-  "description": "I'm a professional passionate about technology and innovation, with a degree in Internet Systems and specializations in IT Management and Design Thinking. If you're looking for someone to develop efficient and innovative solutions, combining technical expertise, creativity, and strategic vision, you've come to the right place!",
+  "description": "Senior Software Engineer. 12+ years shipping Node.js APIs, AI automations, and mobile apps — focused on solutions that create real impact.",
   "skills": "Skills",
   "skills-description": "Technologies and tools that I've been working with along my journey.",
+  "skills-drag-hint": "drag to explore",
   "journey": "My journey",
-  "journey-description": "I have been a full-stack developer since 2013, with experience in internal software development, system integration, and ERP. I worked at Rivelli Alimentos and currently serve as a senior developer at iScholar, where I focus on creating new products and integrations. I also engage in parallel projects, always seeking innovation and efficiency in software development.", 
+  "journey-description": "Software engineer since 2013, with experience spanning internal tooling, ERP systems, SaaS products, and AI-driven automation. My background in Design Thinking, IT Management, and Digital Storytelling keeps me moving naturally between code, processes, and people. I spent 7 years at Rivelli building 40+ internal applications, then joined iScholar — a Brazilian EdTech SaaS serving 100,000+ daily active users — where I've grown from Software Engineer to Senior and now Technical Coordinator.",
+  "read-more": "Read more",
+  "read-less": "Read less",
   "work-experience": "Work experience",
   "work-experience-list": [
     {
       "id": 1,
-      "company": "iScholar",
-      "period": "2020 - Present",
-      "role": "Senior Developer",
+      "company": "Sistema iScholar",
+      "period": "Apr 2025 – Present",
+      "role": "Technical Coordinator",
       "description": [
-        "Developed new products using AWS, PHP, JavaScript, React, Node.js, MySQL, DynamoDB, AngularJS, Ionic, Capacitor, among other technologies.",
-        "Winner of the Best of the Year 2023 award in the Innovation and Creativity category.",
-        "Implemented integrations with partner systems through REST APIs and Webhooks.",
-        "Created interactive dashboards for monitoring indicators and KPIs.",
-        "Worked on project documentation and software architecture definition.",
-        "Actively participated in requirements definition and process improvement.",
-        "Led the launch of applications on the App Store and Google Play."
+        "Lead the technical operations of a support engineering team, running daily standups, 1:1s, ticket prioritization, and technical guidance to unblock developers and act as the bridge between support, engineering, and business teams.",
+        "Significantly increased per-engineer throughput by introducing AI-driven automation, MCP integrations, and process improvements.",
+        "Partner with engineering management on infrastructure and tooling proposals; surface metrics and improvements that contribute to USD 3,000+ in monthly operational savings within the sector.",
+        "Established system observability that did not previously exist, replacing manager intuition with data-driven prioritization and SLAs."
       ]
     },
     {
       "id": 2,
-      "company": "Universo Cultural",
-      "period": "2023 - 2024",
-      "role": "IT Instructor",
+      "company": "Sistema iScholar",
+      "period": "Sep 2024 – Apr 2025",
+      "role": "Senior Software Engineer",
       "description": [
-        "Taught Basic Computing and Microsoft Office Suite classes, focusing on professional training for the job market."
+        "Operated with technical autonomy on complex projects, with active voice in architectural decisions across the full development cycle, from conception to production.",
+        "Served as a technical reference for the team, supporting developers and unblocking deliveries.",
+        "Led implementation and code review of the company's React Native mobile app, ensuring smooth deployment to the App Store and Google Play, and improving CI/CD pipelines.",
+        "Owned ongoing maintenance of the platform's REST API and mobile application across multiple releases."
       ]
     },
     {
       "id": 3,
-      "company": "Rivelli Alimentos",
-      "period": "2020 - 2020",
-      "role": "Data Migration and ERP SAP Integration",
+      "company": "Sistema iScholar",
+      "period": "Apr 2021 – Sep 2024",
+      "role": "Software Engineer",
       "description": [
-        "Performed data migration from the legacy system to ERP SAP, including extraction, cleaning, and conversion of information to the new system.",
-        "Automated the process of exporting and generating import spreadsheets for ERP SAP.",
-        "Developed and worked on structuring integrated data models between SAP and business partners.",
-        "Assisted key users in requirements definition and project data collection."
+        "Developed and maintained core platform products serving 100,000+ daily active users, contributing solution designs and improvements that were consistently incorporated into production.",
+        "Implemented Pix (Brazil's instant payment system) integration and ongoing maintenance of payment flows.",
+        "Owned mobile application maintenance and store releases (App Store / Google Play) and platform REST API maintenance.",
+        "Played an active role in UX/UI definition, balancing user experience with functionality and performance.",
+        "Recognized with the 2023 company performance award for creativity and innovation within the team."
       ]
     },
     {
       "id": 4,
-      "company": "Rivelli Alimentos",
-      "period": "2013 - 2020",
-      "role": "Web Developer",
+      "company": "Rivelli",
+      "period": "Jul 2019 – Jun 2020",
+      "role": "SAP S/4HANA Migration & Integration Analyst",
       "description": [
-        "Developed applications using PHP, JavaScript, MySQL, jQuery, AngularJS, Angular, Vue, Bootstrap, among other technologies.",
-        "Created over 40 applications from scratch for various sectors, including Purchasing, Sales, Logistics, Finance, Human Resources, Meat Processing, and Compliance.",
-        "Implemented integrations with legacy systems through SOAP, REST, and CSV files.",
-        "Developed Android and iOS applications using Ionic and Cordova.",
-        "Created touch-sensitive applications for interactive kiosks.",
-        "Developed interactive dashboards for monitoring indicators and KPIs.",
-        "Worked on requirements gathering and project documentation.",
-        "Actively contributed to project definitions and process improvements across company sectors.",
-        "Participated in automation projects using Arduino and Raspberry Pi."
+        "Joined a multidisciplinary team to migrate the corporate ERP to SAP S/4HANA.",
+        "Extracted and structured data from the legacy system, generated import files for SAP, and developed integrations with business partners.",
+        "Maintained close collaboration with key users, SAP consultants, and external partners to ensure integrations met area-specific requirements.",
+        "Left the entire integration structure documented and fully operational for project continuity."
       ]
     },
     {
       "id": 5,
-      "company": "IFET Campus Barbacena",
-      "period": "2011 - 2013",
-      "role": "Intern",
+      "company": "Rivelli",
+      "period": "Jul 2013 – Jun 2020",
+      "role": "Software Engineer",
       "description": [
-        "Performed maintenance on equipment and computer networks in the study and research laboratory.",
-        "Developed a Java-based management system for the laboratory, allowing students to access computers via library enrollment.",
-        "Created a network monitoring system that blocked access to inappropriate content websites.",
-        "Provided support to students, assisting them with Linux system usage."
+        "Built an internal ecosystem of 40+ applications covering finance, logistics, sales, HR, and inventory control, integrated via REST APIs and webservices.",
+        "Cut multi-day processes down to hours by automating operational routines via mobile and web interfaces.",
+        "Delivered mobile applications, real-time management dashboards, and embedded solutions with Arduino and Raspberry Pi.",
+        "Owned the full development cycle: requirements gathering with business areas, implementation, deployment, and end-user training.",
+        "Team recognized as strategic by leadership for delivering significant operational cost reductions."
       ]
     }
   ],
@@ -194,5 +194,5 @@
   ],
   "projects": "Projects",
   "contact": "Contact me",
-  "contact-description": "How about we have a chat? I'm open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:contato@andresouza.dev.br' class='underline'>contato@andresouza.dev.br</a> or through my social media. Let's connect!"
+  "contact-description": "How about we have a chat? Feel free to reach out at <a href='mailto:contato@andresouza.dev.br' class='underline'>contato@andresouza.dev.br</a> or through my social media. Let's connect!"
 } 

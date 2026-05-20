@@ -9,8 +9,8 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "André Souza | Software Developer",
-  description: "André Souza | Software Developer",
+  title: "André Souza | Senior Software Engineer",
+  description: "Senior Software Engineer with 12+ years of experience in Node.js, TypeScript, React, React Native, PHP, and AWS. Open to remote international opportunities.",
 };
 
 export default function RootLayout({
