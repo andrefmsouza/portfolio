@@ -19,63 +19,67 @@
     {
       "id": 1,
       "company": "Sistema iScholar",
-      "period": "Apr 2025 – Present",
-      "role": "Technical Coordinator",
-      "description": [
-        "Lead the technical operations of a support engineering team, running daily standups, 1:1s, ticket prioritization, and technical guidance to unblock developers and act as the bridge between support, engineering, and business teams.",
-        "Significantly increased per-engineer throughput by introducing AI-driven automation, MCP integrations, and process improvements.",
-        "Partner with engineering management on infrastructure and tooling proposals; surface metrics and improvements that contribute to USD 3,000+ in monthly operational savings within the sector.",
-        "Established system observability that did not previously exist, replacing manager intuition with data-driven prioritization and SLAs."
+      "period": "Apr 2021 – Present",
+      "roles": [
+        {
+          "role": "Technical Coordinator",
+          "period": "Apr 2025 – Present",
+          "description": [
+            "Lead the technical operations of a support engineering team, running daily standups, 1:1s, ticket prioritization, and technical guidance to unblock developers and act as the bridge between support, engineering, and business teams.",
+            "Significantly increased per-engineer throughput by introducing AI-driven automation, MCP integrations, and process improvements.",
+            "Partner with engineering management on infrastructure and tooling proposals; surface metrics and improvements that contribute to USD 3,000+ in monthly operational savings within the sector.",
+            "Established system observability that did not previously exist, replacing manager intuition with data-driven prioritization and SLAs."
+          ]
+        },
+        {
+          "role": "Senior Software Engineer",
+          "period": "Sep 2024 – Apr 2025",
+          "description": [
+            "Operated with technical autonomy on complex projects, with active voice in architectural decisions across the full development cycle, from conception to production.",
+            "Served as a technical reference for the team, supporting developers and unblocking deliveries.",
+            "Led implementation and code review of the company's React Native mobile app, ensuring smooth deployment to the App Store and Google Play, and improving CI/CD pipelines.",
+            "Owned ongoing maintenance of the platform's REST API and mobile application across multiple releases."
+          ]
+        },
+        {
+          "role": "Software Engineer",
+          "period": "Apr 2021 – Sep 2024",
+          "description": [
+            "Developed and maintained core platform products serving 100,000+ daily active users, contributing solution designs and improvements that were consistently incorporated into production.",
+            "Implemented Pix (Brazil's instant payment system) integration and ongoing maintenance of payment flows.",
+            "Owned mobile application maintenance and store releases (App Store / Google Play) and platform REST API maintenance.",
+            "Played an active role in UX/UI definition, balancing user experience with functionality and performance.",
+            "Recognized with the 2023 company performance award for creativity and innovation within the team."
+          ]
+        }
       ]
     },
     {
       "id": 2,
-      "company": "Sistema iScholar",
-      "period": "Sep 2024 – Apr 2025",
-      "role": "Senior Software Engineer",
-      "description": [
-        "Operated with technical autonomy on complex projects, with active voice in architectural decisions across the full development cycle, from conception to production.",
-        "Served as a technical reference for the team, supporting developers and unblocking deliveries.",
-        "Led implementation and code review of the company's React Native mobile app, ensuring smooth deployment to the App Store and Google Play, and improving CI/CD pipelines.",
-        "Owned ongoing maintenance of the platform's REST API and mobile application across multiple releases."
-      ]
-    },
-    {
-      "id": 3,
-      "company": "Sistema iScholar",
-      "period": "Apr 2021 – Sep 2024",
-      "role": "Software Engineer",
-      "description": [
-        "Developed and maintained core platform products serving 100,000+ daily active users, contributing solution designs and improvements that were consistently incorporated into production.",
-        "Implemented Pix (Brazil's instant payment system) integration and ongoing maintenance of payment flows.",
-        "Owned mobile application maintenance and store releases (App Store / Google Play) and platform REST API maintenance.",
-        "Played an active role in UX/UI definition, balancing user experience with functionality and performance.",
-        "Recognized with the 2023 company performance award for creativity and innovation within the team."
-      ]
-    },
-    {
-      "id": 4,
-      "company": "Rivelli",
-      "period": "Jul 2019 – Jun 2020",
-      "role": "SAP S/4HANA Migration & Integration Analyst",
-      "description": [
-        "Joined a multidisciplinary team to migrate the corporate ERP to SAP S/4HANA.",
-        "Extracted and structured data from the legacy system, generated import files for SAP, and developed integrations with business partners.",
-        "Maintained close collaboration with key users, SAP consultants, and external partners to ensure integrations met area-specific requirements.",
-        "Left the entire integration structure documented and fully operational for project continuity."
-      ]
-    },
-    {
-      "id": 5,
       "company": "Rivelli",
       "period": "Jul 2013 – Jun 2020",
-      "role": "Software Engineer",
-      "description": [
-        "Built an internal ecosystem of 40+ applications covering finance, logistics, sales, HR, and inventory control, integrated via REST APIs and webservices.",
-        "Cut multi-day processes down to hours by automating operational routines via mobile and web interfaces.",
-        "Delivered mobile applications, real-time management dashboards, and embedded solutions with Arduino and Raspberry Pi.",
-        "Owned the full development cycle: requirements gathering with business areas, implementation, deployment, and end-user training.",
-        "Team recognized as strategic by leadership for delivering significant operational cost reductions."
+      "roles": [
+        {
+          "role": "SAP S/4HANA Migration & Integration Analyst",
+          "period": "Jul 2019 – Jun 2020",
+          "description": [
+            "Joined a multidisciplinary team to migrate the corporate ERP to SAP S/4HANA.",
+            "Extracted and structured data from the legacy system, generated import files for SAP, and developed integrations with business partners.",
+            "Maintained close collaboration with key users, SAP consultants, and external partners to ensure integrations met area-specific requirements.",
+            "Left the entire integration structure documented and fully operational for project continuity."
+          ]
+        },
+        {
+          "role": "Software Engineer",
+          "period": "Jul 2013 – Jun 2020",
+          "description": [
+            "Built an internal ecosystem of 40+ applications covering finance, logistics, sales, HR, and inventory control, integrated via REST APIs and webservices.",
+            "Cut multi-day processes down to hours by automating operational routines via mobile and web interfaces.",
+            "Delivered mobile applications, real-time management dashboards, and embedded solutions with Arduino and Raspberry Pi.",
+            "Owned the full development cycle: requirements gathering with business areas, implementation, deployment, and end-user training.",
+            "Team recognized as strategic by leadership for delivering significant operational cost reductions."
+          ]
+        }
       ]
     }
   ],

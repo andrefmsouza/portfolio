@@ -3,12 +3,16 @@ import ptTranslations from '@/dictionaries/pt.json';
 import enTranslations from '@/dictionaries/en.json';
 
 type Language = 'pt' | 'en';
-export type WorkExperience = { 
-  id: number; 
-  company: string; 
-  period: string;
+export type WorkRole = {
   role: string;
+  period: string;
   description: string[];
+};
+export type WorkExperience = {
+  id: number;
+  company: string;
+  period: string;
+  roles: WorkRole[];
 };
 export type Education = { 
   id: number; 

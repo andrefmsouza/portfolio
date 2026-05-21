@@ -22,13 +22,13 @@ export default function Home({ params }: Props) {
   const { theme, toggleTheme } = useTheme();
 
   const [isVisible, setIsVisible] = useState(false);
-  const [expandedWork, setExpandedWork] = useState<Set<number>>(new Set());
+  const [expandedWork, setExpandedWork] = useState<Set<string>>(new Set());
   const [expandedEducation, setExpandedEducation] = useState<Set<number>>(new Set());
 
-  function toggleWork(id: number) {
+  function toggleWork(key: string) {
     setExpandedWork(prev => {
       const next = new Set(prev);
-      if (next.has(id)) { next.delete(id); } else { next.add(id); }
+      if (next.has(key)) { next.delete(key); } else { next.add(key); }
       return next;
     });
   }
@@ -202,44 +202,46 @@ export default function Home({ params }: Props) {
             <h2 className="text-2xl font-bold mb-10">{t('work-experience')}</h2>
 
             <ul className="flex flex-col gap-8">
-              {
-                tWorkList('work-experience-list').map((item) => (
-                  <li key={item.id}>
-                    <div style={{ transform: 'translateY(0px) scale(1)', opacity: 1 }} className="will-change-transform grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]">
-                      <div className="order-3 shrink-0 pb-3 pl-6 md:sticky md:top-4 md:order-1 md:row-span-2 md:w-44 md:self-start md:pr-3 md:pb-0 md:pl-0">
-                        <p className="mr-1 block hover:underline md:mr-0 md:mb-1 md:block md:font-bold md:after:hidden">
-                          {item.company}
-                        </p>
-                        <p className="inline-block text-sm leading-tight after:mx-2 after:not-italic after:content-['|'] max-md:italic md:mr-0 md:block md:after:hidden ">
-                          {item.period}
-                        </p>
-                      </div>
-                      <span className="relative order-1 row-span-3 block w-px shrink-0 md:order-2 md:row-span-2">
-                        <span className="absolute left-0 block w-px bg-foreground/15 top-2.5 -bottom-8"></span>
-                        <span className="bg-light-purple absolute top-2.5 -left-1 block size-2 rounded-full"></span>
-                      </span>
-                      <h4 className="text-md order-2 pl-6 font-bold text-pretty md:order-3 md:mb-2 md:text-lg md:font-semibold">
-                        {item.role}
-                      </h4>
-                      <div className="order-3 grow pl-6">
-                        <button
-                          onClick={() => toggleWork(item.id)}
-                          className="text-sm font-semibold text-light-purple hover:underline mb-3 cursor-pointer"
-                        >
-                          {expandedWork.has(item.id) ? t('read-less') : t('read-more')}
-                        </button>
-                        {expandedWork.has(item.id) && (
-                          <ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
-                            {item.description.map((activity: string) => (
-                              <li key={activity}>{activity}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
+              {tWorkList('work-experience-list').map((item) => (
+                <li key={item.id}>
+                  <div style={{ transform: 'translateY(0px) scale(1)', opacity: 1 }} className="will-change-transform grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]">
+                    <div className="order-3 shrink-0 pb-3 pl-6 md:sticky md:top-4 md:order-1 md:w-44 md:self-start md:pr-3 md:pb-0 md:pl-0">
+                      <p className="md:mb-1 md:font-bold">{item.company}</p>
+                      <p className="text-sm text-foreground/60">{item.period}</p>
                     </div>
-                  </li>
-                ))
-              }
+                    <span className="relative order-1 block w-px shrink-0 md:order-2">
+                      <span className="absolute left-0 block w-px bg-foreground/15 top-2.5 -bottom-8"></span>
+                      <span className="bg-light-purple absolute top-2.5 -left-1 block size-2 rounded-full"></span>
+                    </span>
+                    <div className="order-2 pl-6 md:order-3 flex flex-col gap-5">
+                      {item.roles.map((r, roleIdx) => {
+                        const key = `${item.id}-${roleIdx}`;
+                        return (
+                          <div key={key}>
+                            <h4 className="text-md font-bold md:text-lg">
+                              {r.role}
+                              <span className="ml-2 text-sm font-normal text-foreground/50">· {r.period}</span>
+                            </h4>
+                            <button
+                              onClick={() => toggleWork(key)}
+                              className="mt-1 text-sm font-semibold text-light-purple hover:underline cursor-pointer"
+                            >
+                              {expandedWork.has(key) ? t('read-less') : t('read-more')}
+                            </button>
+                            {expandedWork.has(key) && (
+                              <ul className="dark:text-content-dark text-content-light list-disc pl-4 mt-2 text-sm text-pretty sm:text-base">
+                                {r.description.map((activity: string) => (
+                                  <li key={activity}>{activity}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </li>
+              ))}
             </ul>
 
             <hr className="my-20" />

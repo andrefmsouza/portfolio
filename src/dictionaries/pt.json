@@ -19,63 +19,67 @@
     {
       "id": 1,
       "company": "Sistema iScholar",
-      "period": "Abr 2025 – Atualmente",
-      "role": "Coordenador Técnico",
-      "description": [
-        "Lidero a operação técnica de um time de engenheiros do suporte, conduzindo dailies, 1:1s, priorização e distribuição de tickets, oferecendo suporte técnico aos desenvolvedores e fazendo a ponte entre suporte, engenharia e áreas de negócio.",
-        "Aumentei significativamente a produtividade do time com a introdução de automações orientadas a IA, integrações via MCP e melhorias de processo.",
-        "Atuo em parceria com a gerência em propostas de melhoria de infraestrutura e ferramentas; levo métricas e propostas que contribuem para mais de USD 3.000 de economia operacional mensal no setor.",
-        "Implantei visibilidade do sistema que antes não existia, substituindo a percepção subjetiva do gestor por priorização baseada em dados e SLAs."
+      "period": "Abr 2021 – Atualmente",
+      "roles": [
+        {
+          "role": "Coordenador Técnico",
+          "period": "Abr 2025 – Atualmente",
+          "description": [
+            "Lidero a operação técnica de um time de engenheiros do suporte, conduzindo dailies, 1:1s, priorização e distribuição de tickets, oferecendo suporte técnico aos desenvolvedores e fazendo a ponte entre suporte, engenharia e áreas de negócio.",
+            "Aumentei significativamente a produtividade do time com a introdução de automações orientadas a IA, integrações via MCP e melhorias de processo.",
+            "Atuo em parceria com a gerência em propostas de melhoria de infraestrutura e ferramentas; levo métricas e propostas que contribuem para mais de USD 3.000 de economia operacional mensal no setor.",
+            "Implantei visibilidade do sistema que antes não existia, substituindo a percepção subjetiva do gestor por priorização baseada em dados e SLAs."
+          ]
+        },
+        {
+          "role": "Engenheiro de Software Sênior",
+          "period": "Set 2024 – Abr 2025",
+          "description": [
+            "Atuei com autonomia técnica em projetos complexos, com voz ativa em decisões arquiteturais ao longo de todo o ciclo de desenvolvimento, da concepção à produção.",
+            "Servi como referência técnica para o time, apoiando desenvolvedores e desbloqueando entregas.",
+            "Liderei a implementação e o code review do app mobile da empresa em React Native, garantindo publicação fluida na App Store e na Google Play e aprimorando os pipelines de CI/CD.",
+            "Responsável pela manutenção contínua da API REST da plataforma e do aplicativo mobile ao longo de várias releases."
+          ]
+        },
+        {
+          "role": "Engenheiro de Software",
+          "period": "Abr 2021 – Set 2024",
+          "description": [
+            "Desenvolvi e mantive produtos centrais da plataforma, com mais de 100 mil usuários ativos diários, contribuindo com desenhos de solução e melhorias incorporadas ao produto.",
+            "Participei da implementação do Pix (sistema de pagamentos instantâneos do Brasil) e da manutenção contínua dos fluxos de pagamento.",
+            "Responsável pela manutenção e publicação do app mobile nas lojas (App Store / Google Play) e pela manutenção da API REST da plataforma.",
+            "Atuei ativamente na definição de UX/UI, equilibrando experiência do usuário, funcionalidade e performance.",
+            "Reconhecido com o prêmio de performance da empresa em 2023 por criatividade e inovação dentro do time."
+          ]
+        }
       ]
     },
     {
       "id": 2,
-      "company": "Sistema iScholar",
-      "period": "Set 2024 – Abr 2025",
-      "role": "Engenheiro de Software Sênior",
-      "description": [
-        "Atuei com autonomia técnica em projetos complexos, com voz ativa em decisões arquiteturais ao longo de todo o ciclo de desenvolvimento, da concepção à produção.",
-        "Servi como referência técnica para o time, apoiando desenvolvedores e desbloqueando entregas.",
-        "Liderei a implementação e o code review do app mobile da empresa em React Native, garantindo publicação fluida na App Store e na Google Play e aprimorando os pipelines de CI/CD.",
-        "Responsável pela manutenção contínua da API REST da plataforma e do aplicativo mobile ao longo de várias releases."
-      ]
-    },
-    {
-      "id": 3,
-      "company": "Sistema iScholar",
-      "period": "Abr 2021 – Set 2024",
-      "role": "Engenheiro de Software",
-      "description": [
-        "Desenvolvi e mantive produtos centrais da plataforma, com mais de 100 mil usuários ativos diários, contribuindo com desenhos de solução e melhorias incorporadas ao produto.",
-        "Participei da implementação do Pix (sistema de pagamentos instantâneos do Brasil) e da manutenção contínua dos fluxos de pagamento.",
-        "Responsável pela manutenção e publicação do app mobile nas lojas (App Store / Google Play) e pela manutenção da API REST da plataforma.",
-        "Atuei ativamente na definição de UX/UI, equilibrando experiência do usuário, funcionalidade e performance.",
-        "Reconhecido com o prêmio de performance da empresa em 2023 por criatividade e inovação dentro do time."
-      ]
-    },
-    {
-      "id": 4,
-      "company": "Rivelli",
-      "period": "Jul 2019 – Jun 2020",
-      "role": "Analista de Migração e Integração SAP S/4HANA",
-      "description": [
-        "Integrei um time multidisciplinar na migração do ERP corporativo para o SAP S/4HANA.",
-        "Extraí e estruturei dados do sistema legado, gerei arquivos de importação para o SAP e desenvolvi integrações com parceiros de negócio.",
-        "Mantive colaboração próxima com key users, consultores SAP e parceiros externos para garantir que as integrações atendessem aos requisitos de cada área.",
-        "Entreguei toda a estrutura de integração documentada e plenamente operacional para a continuidade do projeto."
-      ]
-    },
-    {
-      "id": 5,
       "company": "Rivelli",
       "period": "Jul 2013 – Jun 2020",
-      "role": "Engenheiro de Software",
-      "description": [
-        "Construí um ecossistema interno com mais de 40 aplicações cobrindo finanças, logística, vendas, RH e controle de estoque, integradas via APIs REST e webservices.",
-        "Reduzi processos de dias para horas com automações de rotinas operacionais via interfaces mobile e web.",
-        "Entreguei aplicações mobile, dashboards de gestão em tempo real e soluções embarcadas com Arduino e Raspberry Pi.",
-        "Responsável por todo o ciclo: levantamento de requisitos com as áreas de negócio, implementação, deploy e treinamento de usuários finais.",
-        "Time reconhecido como estratégico pela liderança pela entrega de reduções operacionais significativas para a empresa."
+      "roles": [
+        {
+          "role": "Analista de Migração e Integração SAP S/4HANA",
+          "period": "Jul 2019 – Jun 2020",
+          "description": [
+            "Integrei um time multidisciplinar na migração do ERP corporativo para o SAP S/4HANA.",
+            "Extraí e estruturei dados do sistema legado, gerei arquivos de importação para o SAP e desenvolvi integrações com parceiros de negócio.",
+            "Mantive colaboração próxima com key users, consultores SAP e parceiros externos para garantir que as integrações atendessem aos requisitos de cada área.",
+            "Entreguei toda a estrutura de integração documentada e plenamente operacional para a continuidade do projeto."
+          ]
+        },
+        {
+          "role": "Engenheiro de Software",
+          "period": "Jul 2013 – Jun 2020",
+          "description": [
+            "Construí um ecossistema interno com mais de 40 aplicações cobrindo finanças, logística, vendas, RH e controle de estoque, integradas via APIs REST e webservices.",
+            "Reduzi processos de dias para horas com automações de rotinas operacionais via interfaces mobile e web.",
+            "Entreguei aplicações mobile, dashboards de gestão em tempo real e soluções embarcadas com Arduino e Raspberry Pi.",
+            "Responsável por todo o ciclo: levantamento de requisitos com as áreas de negócio, implementação, deploy e treinamento de usuários finais.",
+            "Time reconhecido como estratégico pela liderança pela entrega de reduções operacionais significativas para a empresa."
+          ]
+        }
       ]
     }
   ],
