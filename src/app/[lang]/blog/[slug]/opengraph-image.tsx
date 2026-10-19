@@ -15,6 +15,7 @@ export default async function Image({ params }: { params: Promise<{ lang: string
   return renderOgImage({
     eyebrow: t["blog-title"],
     title: post?.title ?? site.name,
-    footer: post ? `${formatDate(post.date, lang)} · ${post.readingMinutes} ${t["reading-time"]}` : "",
+    footer: post ? `${site.name} · ${formatDate(post.date, lang)} · ${post.readingMinutes} ${t["reading-time"]}` : site.name,
+    photo: "small",
   });
 }

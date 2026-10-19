@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const ogSize = { width: 1200, height: 630 };
@@ -12,7 +14,25 @@ async function loadGoogleFont(family: string, text: string) {
 }
 
 /** Cartão de compartilhamento (LinkedIn, X, WhatsApp...) no mesmo estilo editorial do site */
-export async function renderOgImage({ eyebrow, title, footer }: { eyebrow: string; title: string; footer: string }) {
+async function loadAvatar() {
+  const data = await readFile(join(process.cwd(), "src/lib/og-avatar.jpg"));
+  return `data:image/jpeg;base64,${data.toString("base64")}`;
+}
+
+/** Cartão de compartilhamento (LinkedIn, X, WhatsApp...) no mesmo estilo editorial do site */
+export async function renderOgImage({
+  eyebrow,
+  title,
+  footer,
+  photo,
+}: {
+  eyebrow: string;
+  title: string;
+  footer: string;
+  /** "large": foto ocupando a lateral (home) · "small": avatar ao lado do rodapé (posts) */
+  photo: "large" | "small";
+}) {
+  const avatar = await loadAvatar();
   const text = `${eyebrow}${title}${footer}{}AS`;
   let fonts: { name: string; data: ArrayBuffer; style: "normal"; weight: 400 }[] = [];
   try {
@@ -35,15 +55,13 @@ export async function renderOgImage({ eyebrow, title, footer }: { eyebrow: strin
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 80,
           background: "#0e0e0d",
           color: "#ecebe6",
           backgroundImage: "radial-gradient(circle at 85% 15%, rgba(125,90,164,0.28), transparent 45%)",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16, fontFamily: "Geist Mono", fontSize: 26, color: "#9b9991" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: photo === "large" ? "72px 64px" : 80 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: "Geist Mono", fontSize: 22, color: "#9b9991", whiteSpace: "nowrap" }}>
           <span style={{ color: "#7d5aa4" }}>{"{"}</span>
           <span style={{ color: "#ecebe6" }}>AS</span>
           <span style={{ color: "#7d5aa4" }}>{"}"}</span>
@@ -56,16 +74,42 @@ export async function renderOgImage({ eyebrow, title, footer }: { eyebrow: strin
           style={{
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
             borderTop: "1px solid rgba(236,235,230,0.15)",
             paddingTop: 28,
             fontFamily: "Geist Mono",
-            fontSize: 24,
+            fontSize: 22,
+            gap: 24,
+            whiteSpace: "nowrap",
             color: "#9b9991",
           }}
         >
-          <span>{footer}</span>
+          <span style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            {photo === "small" && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={avatar} width={52} height={52} alt="" style={{ borderRadius: 999 }} />
+            )}
+            {footer}
+          </span>
           <span>andresouza.dev.br</span>
         </div>
+        </div>
+        {photo === "large" && (
+          <div style={{ display: "flex", position: "relative", width: 400, height: "100%" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={avatar} width={400} height={630} alt="" style={{ objectFit: "cover", objectPosition: "top" }} />
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "100%",
+                height: "100%",
+                backgroundImage: "linear-gradient(90deg, #0e0e0d 0%, rgba(14,14,13,0) 35%)",
+              }}
+            />
+          </div>
+        )}
       </div>
     ),
     { ...ogSize, fonts }

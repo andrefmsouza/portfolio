@@ -60,7 +60,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           "@type": "Person",
           name: site.name,
           url: absoluteUrl(`/${lang}`),
-          image: absoluteUrl("/images/avatar.png"),
+          image: absoluteUrl("/images/avatar.jpg"),
           jobTitle: t.status,
           email: `mailto:${site.email}`,
           sameAs: [site.social.linkedin, site.social.github],
@@ -120,7 +120,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 <div aria-hidden className="avatar absolute -inset-3 border border-line" />
                 <Image
                   className="avatar aspect-square w-full bg-surface object-cover"
-                  src="/images/avatar.png"
+                  src="/images/avatar.jpg"
                   alt={site.name}
                   width={500}
                   height={500}

@@ -9,5 +9,5 @@ export const alt = site.name;
 export default async function Image({ params }: { params: Promise<{ lang: string }> }) {
   const lang = (await params).lang as Locale;
   const t = getDictionary(lang);
-  return renderOgImage({ eyebrow: t.status, title: site.name, footer: t["meta-title"].split(" — ")[1] });
+  return renderOgImage({ eyebrow: t.status, title: site.name, footer: t["meta-title"].split(" — ")[1], photo: "large" });
 }
