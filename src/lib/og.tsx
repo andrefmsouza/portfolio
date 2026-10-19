@@ -40,13 +40,13 @@ export async function renderOgImage({ eyebrow, title, footer }: { eyebrow: strin
           padding: 80,
           background: "#0e0e0d",
           color: "#ecebe6",
-          backgroundImage: "radial-gradient(circle at 85% 15%, rgba(255,138,76,0.18), transparent 45%)",
+          backgroundImage: "radial-gradient(circle at 85% 15%, rgba(125,90,164,0.28), transparent 45%)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontFamily: "Geist Mono", fontSize: 26, color: "#9b9991" }}>
-          <span style={{ color: "#ff8a4c" }}>{"{"}</span>
+          <span style={{ color: "#7d5aa4" }}>{"{"}</span>
           <span style={{ color: "#ecebe6" }}>AS</span>
-          <span style={{ color: "#ff8a4c" }}>{"}"}</span>
+          <span style={{ color: "#7d5aa4" }}>{"}"}</span>
           <span style={{ marginLeft: 24, textTransform: "uppercase", letterSpacing: 2 }}>{eyebrow}</span>
         </div>
         <div style={{ display: "flex", fontFamily: "Instrument Serif", fontSize: title.length > 60 ? 72 : 92, lineHeight: 1.05, letterSpacing: -1 }}>
