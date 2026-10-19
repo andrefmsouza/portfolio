@@ -1,12 +1,11 @@
 {
   "menu-home": "Home",
   "menu-skills": "Skills",
-  "menu-projects": "Projects",
   "menu-journey": "Journey",
   "menu-contact": "Contact",
-  "hello": "Hello, there!",
-  "name": "André Souza here!",
-  "description": "Senior Software Engineer. 12+ years shipping Node.js APIs, AI automations, and mobile apps — focused on solutions that create real impact.",
+  "hello": "Hi, I'm",
+  "name": "André Souza",
+  "description": "Software engineer since 2013. I currently lead technical operations at iScholar, an EdTech platform with 100,000+ daily active users, and I write here about what I'm studying and building.",
   "skills": "Skills",
   "skills-description": "Technologies and tools that I've been working with along my journey.",
   "skills-drag-hint": "drag to explore",
@@ -83,7 +82,7 @@
       ]
     }
   ],
-  "education": "Education and certifications ",  
+  "education": "Education and certifications ",
   "education-list": [
     {
       "id": 1,
@@ -196,7 +195,57 @@
       ]
     }
   ],
-  "projects": "Projects",
-  "contact": "Contact me",
-  "contact-description": "How about we have a chat? Feel free to reach out at <a href='mailto:contato@andresouza.dev.br' class='underline'>contato@andresouza.dev.br</a> or through my social media. Let's connect!"
-} 
+  "contact": "Let's talk",
+  "contact-description": "Want to talk about a project, a role, or something you read here? My inbox is always open, and I also reply on LinkedIn.",
+  "meta-title": "André Souza — Senior Software Engineer",
+  "meta-description": "Software engineer with 12+ years of experience in Node.js, TypeScript, React, React Native and AWS. Technical Coordinator at iScholar. A blog about what I'm studying and building.",
+  "menu-blog": "Blog",
+  "status": "Technical Coordinator at iScholar",
+  "stats": [
+    {
+      "value": 12,
+      "suffix": "+",
+      "label": "years writing software"
+    },
+    {
+      "value": 40,
+      "suffix": "+",
+      "label": "internal applications shipped"
+    },
+    {
+      "value": 100,
+      "suffix": "k+",
+      "label": "daily active users on the platform"
+    }
+  ],
+  "cta-blog": "Read the blog",
+  "cta-contact": "Get in touch",
+  "scroll-hint": "scroll for more",
+  "latest-posts": "Recent writing",
+  "latest-posts-description": "Notes on what I'm studying, trying out and learning on the job.",
+  "see-all-posts": "See all posts",
+  "copy-email": "Copy email",
+  "email-copied": "Email copied",
+  "blog-title": "Blog",
+  "blog-description": "Notes on what I'm studying and building: software engineering, applied AI, technical leadership and whatever else comes up along the way.",
+  "blog-empty": "No posts published yet. Check back soon.",
+  "blog-all": "All",
+  "blog-tag-title": "Posts about",
+  "reading-time": "min read",
+  "updated-on": "Updated on",
+  "on-this-page": "On this page",
+  "back-to-blog": "All posts",
+  "copy": "Copy",
+  "copied": "Copied",
+  "draft": "Draft",
+  "not-found-title": "Page not found",
+  "not-found-description": "The address may have changed, or the content no longer exists.",
+  "not-found-cta": "Back to home",
+  "footer-note": "Built with Next.js, written in Markdown.",
+  "rss": "RSS",
+  "skip-to-content": "Skip to content",
+  "toggle-theme": "Toggle theme",
+  "toggle-menu": "Open menu",
+  "back-to-top": "Back to top",
+  "change-language": "Change language"
+}

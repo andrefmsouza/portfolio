@@ -1,327 +1,248 @@
-"use client";
-
-import { useEffect, useState, use } from "react";
-import { useTranslations } from '@/hooks/useTranslations';
-import { useTheme } from '@/hooks/useTheme';
-import Image from 'next/image';
-import { FaArrowUp, FaGithub, FaLinkedin, FaSun } from "react-icons/fa";
-import { IoIosMenu } from "react-icons/io";
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { SkillsBubbles } from "@/components/SkillsBubbles";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { FiArrowDown, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { SkillsBubbles } from "@/components/SkillsBubbles";
+import { Timeline, type TimelineEntry } from "@/components/Timeline";
+import { CountUp, Parallax, Reveal, SplitText, Spotlight } from "@/components/motion";
+import { CopyEmailButton } from "@/components/interactive";
+import { JsonLd, PostList, SectionLabel, SocialLinks } from "@/components/content";
+import { getDictionary, type Education, type Locale, type WorkExperience } from "@/lib/i18n";
+import { getAllPosts } from "@/lib/blog";
+import { absoluteUrl, site } from "@/lib/site";
 
-interface Props {
-  params: Promise<{
-    lang: 'pt' | 'en'
-  }>
+const MARQUEE = [
+  "Node.js", "TypeScript", "React", "React Native", "Next.js", "AWS", "PHP", "Python",
+  "PostgreSQL", "MySQL", "Claude", "OpenAI", "MCP", "Vue.js", "Angular", "Arduino",
+];
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const lang = (await params).lang as Locale;
+  return {
+    alternates: {
+      canonical: `/${lang}`,
+      languages: { "pt-BR": "/pt", en: "/en", "x-default": "/pt" },
+    },
+  };
 }
 
-export default function Home({ params }: Props) {
-  const { lang } = use(params);
-  const { t, language, changeLanguage, tWorkList, tEducationList } = useTranslations();
-  const { theme, toggleTheme } = useTheme();
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
+  const lang = (await params).lang as Locale;
+  const t = getDictionary(lang);
+  const posts = getAllPosts(lang).slice(0, 3);
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [expandedWork, setExpandedWork] = useState<Set<string>>(new Set());
-  const [expandedEducation, setExpandedEducation] = useState<Set<number>>(new Set());
+  const work: TimelineEntry[] = (t["work-experience-list"] as WorkExperience[]).map((job) => ({
+    id: `work-${job.id}`,
+    title: job.company,
+    period: job.period,
+    items: job.roles.map((role, i) => ({
+      key: `work-${job.id}-${i}`,
+      title: role.role,
+      period: role.period,
+      bullets: role.description,
+    })),
+  }));
 
-  function toggleWork(key: string) {
-    setExpandedWork(prev => {
-      const next = new Set(prev);
-      if (next.has(key)) { next.delete(key); } else { next.add(key); }
-      return next;
-    });
-  }
+  const education: TimelineEntry[] = (t["education-list"] as Education[]).map((edu) => ({
+    id: `edu-${edu.id}`,
+    title: edu.school,
+    period: edu.period,
+    items: [{ key: `edu-${edu.id}`, title: edu.course, bullets: edu.description }],
+  }));
 
-  function toggleEducation(id: number) {
-    setExpandedEducation(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) { next.delete(id); } else { next.add(id); }
-      return next;
-    });
-  }
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= window.innerHeight) {
-        setIsVisible(true); 
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    changeLanguage(lang);
-  }, [lang, changeLanguage]);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const html = document.querySelector('html');
-    
-    if (theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      html?.classList.add("dark");
-    } else {
-      html?.classList.remove("dark");
-    }
-  }, [theme]);
+  const timelineLabels = { more: t["read-more"], less: t["read-less"] };
 
   return (
-    <div className="font-nunito">
-      <nav className="fixed top-0 w-full bg-background md:bg-transparent z-50">
-        <div className="flex justify-between mx-auto">
-          <div className="fixed left-0 top-6 items-center justify-center px-2 border-none">
-            <Link 
-              className={`text-md sm:text-2xl font-bold bg-background rounded-md py-2 px-4 text-light-purple`}
-              href={`#home`}
-            >
-            {'{'} A S {'}'}
-            </Link>
-          </div>
-          <div className="flex-1"></div>
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: site.name,
+          url: absoluteUrl(`/${lang}`),
+          image: absoluteUrl("/images/avatar.png"),
+          jobTitle: t.status,
+          email: `mailto:${site.email}`,
+          sameAs: [site.social.linkedin, site.social.github],
+          worksFor: { "@type": "Organization", name: "iScholar" },
+        }}
+      />
 
-          <ul className="right-0 hidden md:flex flex-row items-center justify-center space-x-10 my-4 mx-2 border-2 rounded-md px-4 bg-menu border-none" >
-            <li className="m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer">
-              <Link href={`#home`}>{t('menu-home')}</Link>
-            </li>
-            <li className="m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer">
-              <Link href={`#skills`}>{t('menu-skills')}</Link>
-            </li>
-            <li className="m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer">
-              <Link href={`#journey`}>{t('menu-journey')}</Link>
-            </li>
-            {/* <li className="m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer">
-              <Link href={`#projects`}>{t('menu-projects')}</Link>
-            </li> */}
-            <li className="m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer">
-              <Link href={`#contact`}>{t('menu-contact')}</Link>
-            </li>
-          </ul>
+      {/* ─── Hero ─────────────────────────────────────────────────────── */}
+      <section id="home" className="relative isolate overflow-hidden">
+        <Spotlight className="-z-10" />
+        <div className="mx-auto grid min-h-[100svh] max-w-6xl items-center gap-12 px-6 pt-32 pb-20 md:grid-cols-[1.4fr_1fr] md:pt-24">
+          <div>
+            <Reveal y={10}>
+              <p className="inline-flex items-center gap-2.5 rounded-full border border-line bg-background/60 py-1.5 pr-4 pl-3 text-sm text-muted backdrop-blur">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
+                  <span className="relative inline-flex size-2 rounded-full bg-accent" />
+                </span>
+                {t.status}
+              </p>
+            </Reveal>
 
-          <ul className="right-0 flex flex-row items-center justify-center space-x-10 my-4 mx-2 border-2 rounded-md px-2 bg-menu border-none" >
-            <li className={`m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer ${language === 'en' ? 'bg-background' : ''}`}>
-              <Link href="/en">EN</Link>
-            </li>
-            <li className={`m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer ${language === 'pt' ? 'bg-background' : ''}`}>
-              <Link href="/pt">PT</Link>
-            </li>
-          </ul>
-
-          <div className="right-0 flex flex-row items-center justify-center space-x-10 my-4 mx-2 border-2 rounded-md bg-menu border-none" onClick={toggleTheme}>
-            <div className={`m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer`}>
-                {
-                    theme === "dark" ?
-                    <FaSun className="text-yellow-500" />:
-                    <BsFillMoonStarsFill  className="" />
-                }
-            </div>
-          </div>
-
-          <div className="md:hidden right-0 flex flex-row items-center justify-center space-x-10 my-4 mx-2 border-2 rounded-md bg-menu border-none z-200" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <div className={`m-1 rounded-md py-2 px-4 font-bold text-sm hover:bg-background cursor-pointer space-y-1 `}>
-              <IoIosMenu />
-            </div>
-          </div>
-
-          <ul className={`md:hidden space-y-10 w-full border-2 rounded-md px-4 bg-menu border-none absolute top-0 right-0 text-center py-15 z-100 ${isMenuOpen ? 'block' : 'hidden'} `} >
-            <li className="m-1 rounded-md p-4 font-bold text-sm hover:bg-background cursor-pointer" onClick={() => setIsMenuOpen(false)}>
-              <Link href={`#home`}>{t('menu-home')}</Link>
-            </li>
-            <li className="m-1 rounded-md p-4 font-bold text-sm hover:bg-background cursor-pointer" onClick={() => setIsMenuOpen(false)}>
-              <Link href={`#skills`}>{t('menu-skills')}</Link>
-            </li>
-            <li className="m-1 rounded-md p-4 font-bold text-sm hover:bg-background cursor-pointer" onClick={() => setIsMenuOpen(false)}>
-              <Link href={`#journey`}>{t('menu-journey')}</Link>
-            </li>
-            {/* <li className="m-1 rounded-md p-4 font-bold text-sm hover:bg-background cursor-pointer" onClick={() => setIsMenuOpen(false)}>
-              <Link href={`#projects`}>{t('menu-projects')}</Link>
-            </li> */}
-            <li className="m-1 rounded-md p-4 font-bold text-sm hover:bg-background cursor-pointer" onClick={() => setIsMenuOpen(false)}>
-              <Link href={`#contact`}>{t('menu-contact')}</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <div className="container mx-auto px-10 max-w-[1080px]">
-        <header id="home" className="pt-20 md:pt-0 flex justify-center items-center">
-          <div className="flex flex-col w-full max-w-300 min-h-screen md:flex-row md:justify-center items-center">
-            <div className="flex flex-col md:flex-1 mb-10 md:mb-0 space-y-5 mx-4">
-              <h2 className="text-4xl font-bold">{t('hello')}</h2>
-              <h1 className="text-5xl font-bold">{t('name')}</h1>
-              <p className="text-lg font-bold">{t('description')}</p>
-              <div className="flex flex-row space-x-5 justify-center items-center mx-4">
-                <hr className="mr-4 hidden grow self-center border-t border-foreground/25 sm:block" />
-                <Link href="https://www.linkedin.com/in/andrefmsouza/" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin  className="text-5xl"/>
-                </Link>
-                <Link href="https://github.com/andrefmsouza" target="_blank" rel="noopener noreferrer">
-                  <FaGithub  className="text-5xl"/>
-                </Link>
-              </div>
-            </div>
-            <div className="md:flex-1 flex justify-center items-center animate-avatar">
-              <Image 
-                className="w-auto max-h-100 avatar"
-                src="/images/avatar.png"
-                alt="André Souza"
-                width={500}
-                height={500}
-                priority
+            <h1 className="mt-8">
+              <SplitText text={t.hello} className="block font-mono text-sm tracking-wider text-muted uppercase" />
+              <SplitText
+                text={t.name}
+                delay={0.15}
+                className="mt-3 block font-serif text-[clamp(3.6rem,11vw,8.5rem)] leading-[0.92] tracking-[-0.02em]"
               />
-            </div>
+            </h1>
+
+            <Reveal delay={0.5}>
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">{t.description}</p>
+            </Reveal>
+
+            <Reveal delay={0.65} className="mt-10 flex flex-wrap items-center gap-3">
+              <Link
+                href={`/${lang}/blog`}
+                className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform active:scale-[0.97]"
+              >
+                {t["cta-blog"]}
+                <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium transition-colors hover:border-foreground"
+              >
+                {t["cta-contact"]}
+              </a>
+              <SocialLinks className="ml-1" />
+            </Reveal>
           </div>
-        </header>
-      </div>
 
-      <div className="container mx-auto px-10 max-w-[960px]">
-        <section id="skills">
-          <div className="flex flex-col w-full pt-50 sm:pt-30">
-            <h1 className="text-4xl font-bold">{t('skills')}</h1>
-            <p className="text-lg my-5 font-bold">{t('skills-description')}</p>
-            <div className="mt-10">
-              <SkillsBubbles dragHint={t('skills-drag-hint')} />
-            </div>
-          </div>
-        </section>
-        
-        <section id="journey">
-          <div className="flex flex-col w-full pt-50 sm:pt-30">
-            <h1 className="text-4xl font-bold">{t('journey')}</h1>
-            <p className="text-lg my-5 font-bold">{t('journey-description')}</p>
-
-            <hr className="my-10" />
-
-            <h2 className="text-2xl font-bold mb-10">{t('work-experience')}</h2>
-
-            <ul className="flex flex-col gap-8">
-              {tWorkList('work-experience-list').map((item) => (
-                <li key={item.id}>
-                  <div style={{ transform: 'translateY(0px) scale(1)', opacity: 1 }} className="will-change-transform grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]">
-                    <div className="order-3 shrink-0 pb-3 pl-6 md:sticky md:top-4 md:order-1 md:w-44 md:self-start md:pr-3 md:pb-0 md:pl-0">
-                      <p className="md:mb-1 md:font-bold">{item.company}</p>
-                      <p className="text-sm text-foreground/60">{item.period}</p>
-                    </div>
-                    <span className="relative order-1 block w-px shrink-0 md:order-2">
-                      <span className="absolute left-0 block w-px bg-foreground/15 top-2.5 -bottom-8"></span>
-                      <span className="bg-light-purple absolute top-2.5 -left-1 block size-2 rounded-full"></span>
-                    </span>
-                    <div className="order-2 pl-6 md:order-3 flex flex-col gap-5">
-                      {item.roles.map((r, roleIdx) => {
-                        const key = `${item.id}-${roleIdx}`;
-                        return (
-                          <div key={key}>
-                            <h4 className="text-md font-bold md:text-lg">
-                              {r.role}
-                              <span className="ml-2 text-sm font-normal text-foreground/50">· {r.period}</span>
-                            </h4>
-                            <button
-                              onClick={() => toggleWork(key)}
-                              className="mt-1 text-sm font-semibold text-light-purple hover:underline cursor-pointer"
-                            >
-                              {expandedWork.has(key) ? t('read-less') : t('read-more')}
-                            </button>
-                            {expandedWork.has(key) && (
-                              <ul className="dark:text-content-dark text-content-light list-disc pl-4 mt-2 text-sm text-pretty sm:text-base">
-                                {r.description.map((activity: string) => (
-                                  <li key={activity}>{activity}</li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <hr className="my-20" />
-
-            <h2 className="text-2xl font-bold mb-10">{t('education')}</h2>
-
-            <ul className="flex flex-col gap-8">
-              {
-                tEducationList('education-list').map((item) => (
-                  <li key={item.id}>
-                    <div style={{ transform: 'translateY(0px) scale(1)', opacity: 1 }} className="will-change-transform grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]">
-                      <div className="order-3 shrink-0 pb-3 pl-6 md:sticky md:top-4 md:order-1 md:row-span-2 md:w-44 md:self-start md:pr-3 md:pb-0 md:pl-0">
-                        <p className="mr-1 block hover:underline md:mr-0 md:mb-1 md:block md:font-bold md:after:hidden">
-                          {item.school}
-                        </p>
-                        <p className="inline-block text-sm leading-tight after:mx-2 after:not-italic after:content-['|'] max-md:italic md:mr-0 md:block md:after:hidden ">
-                          {item.period}
-                        </p>
-                      </div>
-                      <span className="relative order-1 row-span-3 block w-px shrink-0 md:order-2 md:row-span-2">
-                        <span className="absolute left-0 block w-px bg-foreground/15 top-2.5 -bottom-8"></span>
-                        <span className="bg-light-purple absolute top-2.5 -left-1 block size-2 rounded-full"></span>
-                      </span>
-                      <h4 className="text-md order-2 pl-6 font-bold text-pretty md:order-3 md:mb-2 md:text-lg md:font-semibold">
-                        {item.course}
-                      </h4>
-                      <div className="order-3 grow pl-6">
-                        {item.description.length > 0 && (
-                          <button
-                            onClick={() => toggleEducation(item.id)}
-                            className="text-sm font-semibold text-light-purple hover:underline mb-3 cursor-pointer"
-                          >
-                            {expandedEducation.has(item.id) ? t('read-less') : t('read-more')}
-                          </button>
-                        )}
-                        {expandedEducation.has(item.id) && (
-                          <ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
-                            {item.description.map((activity: string) => (
-                              <li key={activity}>{activity}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </section>
-
-        {/* <section id="projects">
-          <div className="flex flex-row w-full min-h-screen justify-center items-center"></div>
-        </section> */}
-        
-        <section id="contact">
-          <div className="flex flex-col pt-50 sm:pt-30 pb-50 w-full max-w-300 md:flex-row md:justify-center items-center">
-            <div className="flex flex-col md:flex-1 mb-10 md:mb-0 space-y-5 mx-4">
-              <h2 className="text-5xl font-bold">{t('contact')}</h2>
-              <p className="text-lg my-20 ms-0 md:ml-20" dangerouslySetInnerHTML={{ __html: t('contact-description') }}></p>
-              <div className="flex flex-row space-x-5 justify-center items-center mx-4">
-                <Link href="https://www.linkedin.com/in/andrefmsouza/" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin  className="text-5xl"/>
-                </Link>
-                <Link href="https://github.com/andrefmsouza" target="_blank" rel="noopener noreferrer">
-                  <FaGithub  className="text-5xl"/>
-                </Link>
-                <hr className="mr-4 hidden grow self-center border-t border-foreground/25 sm:block" />
+          <Reveal delay={0.3} y={40} className="mx-auto w-full max-w-[22rem] md:max-w-none">
+            <Parallax offset={80}>
+              <div className="relative">
+                <div aria-hidden className="avatar absolute -inset-3 border border-line" />
+                <Image
+                  className="avatar aspect-square w-full bg-surface object-cover"
+                  src="/images/avatar.png"
+                  alt={site.name}
+                  width={500}
+                  height={500}
+                  priority
+                />
               </div>
+            </Parallax>
+          </Reveal>
+        </div>
+
+        <a
+          href="#stats"
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-foreground md:flex"
+        >
+          <FiArrowDown className="animate-bounce" />
+          {t["scroll-hint"]}
+        </a>
+      </section>
+
+      {/* ─── Números ──────────────────────────────────────────────────── */}
+      <section id="stats" className="scroll-mt-20 border-y border-line">
+        <div className="mx-auto grid max-w-6xl divide-line px-6 sm:grid-cols-3 sm:divide-x">
+          {t.stats.map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 0.1} className="py-10 sm:px-8 sm:first:pl-0">
+              <p className="font-serif text-6xl">
+                <CountUp value={stat.value} suffix={stat.suffix} />
+              </p>
+              <p className="mt-2 text-sm text-muted">{stat.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── Faixa de tecnologias ─────────────────────────────────────── */}
+      <div aria-hidden className="overflow-hidden border-b border-line py-5 [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="marquee-track flex w-max gap-10 font-mono text-sm text-muted">
+          {[...MARQUEE, ...MARQUEE].map((item, i) => (
+            <span key={i} className="flex items-center gap-10">
+              {item}
+              <span className="text-accent">/</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ─── Habilidades ──────────────────────────────────────────────── */}
+      <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
+        <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:items-center">
+          <Reveal>
+            <SectionLabel index="01">{t["menu-skills"]}</SectionLabel>
+            <h2 className="font-serif text-5xl leading-[1.02] md:text-6xl">{t.skills}</h2>
+            <p className="mt-6 max-w-sm leading-relaxed text-muted">{t["skills-description"]}</p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <SkillsBubbles dragHint={t["skills-drag-hint"]} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── Trajetória ───────────────────────────────────────────────── */}
+      <section id="journey" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
+        <Reveal>
+          <SectionLabel index="02">{t["menu-journey"]}</SectionLabel>
+          <h2 className="font-serif text-5xl leading-[1.02] md:text-6xl">{t.journey}</h2>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">{t["journey-description"]}</p>
+        </Reveal>
+
+        <h3 className="mt-24 mb-12 font-mono text-xs tracking-wider text-muted uppercase">{t["work-experience"]}</h3>
+        <Timeline entries={work} labels={timelineLabels} />
+
+        <h3 className="mt-28 mb-12 font-mono text-xs tracking-wider text-muted uppercase">{t.education}</h3>
+        <Timeline entries={education} labels={timelineLabels} />
+      </section>
+
+      {/* ─── Blog ─────────────────────────────────────────────────────── */}
+      {posts.length > 0 && (
+        <section id="writing" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
+          <Reveal className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <SectionLabel index="03">{t["menu-blog"]}</SectionLabel>
+              <h2 className="font-serif text-5xl leading-[1.02] md:text-6xl">{t["latest-posts"]}</h2>
+              <p className="mt-6 max-w-md leading-relaxed text-muted">{t["latest-posts-description"]}</p>
             </div>
-          </div>
+            <Link href={`/${lang}/blog`} className="group inline-flex shrink-0 items-center gap-2 text-sm">
+              <span className="link-underline">{t["see-all-posts"]}</span>
+              <FiArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <PostList posts={posts} lang={lang} t={t} />
+          </Reveal>
         </section>
-      </div>
+      )}
 
-      <div className={`bottom-0 right-0 fixed flex flex-row items-center justify-center space-10 m-4 w-12 h-12 border-2 rounded-md bg-menu border-none ${isVisible ? 'block' : 'hidden'}`}>
-        <Link href="#home" className={`m-1 rounded-md py-2 px-4 font-bold text-sm cursor-pointer`}>
-          <FaArrowUp />
-        </Link>
-      </div>
+      {/* ─── Contato ──────────────────────────────────────────────────── */}
+      <section id="contact" className="relative isolate scroll-mt-24 overflow-hidden border-t border-line">
+        <Spotlight className="-z-10" />
+        <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
+          <Reveal>
+            <SectionLabel index={posts.length > 0 ? "04" : "03"}>{t["menu-contact"]}</SectionLabel>
+            <h2 className="font-serif text-6xl leading-none md:text-8xl">
+              {t.contact}
+              <span className="text-accent">.</span>
+            </h2>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">{t["contact-description"]}</p>
+          </Reveal>
 
-    </div>
+          <Reveal delay={0.15} className="mt-14 flex flex-col gap-6">
+            <a
+              href={`mailto:${site.email}`}
+              className="group inline-flex w-fit items-center gap-3 font-serif text-[clamp(1.8rem,5.5vw,4rem)] leading-none italic"
+            >
+              <span className="link-underline pb-1">{site.email}</span>
+              <FiArrowUpRight className="size-[0.7em] text-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <CopyEmailButton email={site.email} label={t["copy-email"]} copiedLabel={t["email-copied"]} />
+              <SocialLinks />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
-} 
+}

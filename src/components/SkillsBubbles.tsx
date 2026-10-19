@@ -115,7 +115,7 @@ function IconBubble({ skill, index, dragX, dragY }: IconBubbleProps) {
       onHoverEnd={() => setHovered(false)}
     >
       <div
-        className="bg-menu rounded-2xl flex justify-center items-center shadow-sm"
+        className="bg-surface border border-line rounded-[22px] flex justify-center items-center text-foreground/80 transition-colors hover:text-accent"
         style={{
           width: baseSize,
           height: baseSize,
@@ -126,7 +126,7 @@ function IconBubble({ skill, index, dragX, dragY }: IconBubbleProps) {
       </div>
 
       <motion.span
-        className="text-[10px] font-bold mt-1.5 whitespace-nowrap pointer-events-none"
+        className="font-mono text-[10px] text-muted mt-1.5 whitespace-nowrap pointer-events-none"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.15 }}
       >
@@ -143,11 +143,12 @@ export function SkillsBubbles({ dragHint }: { dragHint: string }) {
   const dragY = useMotionValue(0);
 
   return (
-    <div className="relative w-full h-[420px] sm:h-[520px] overflow-hidden rounded-2xl cursor-grab active:cursor-grabbing select-none">
+    <div>
+    <div className="relative w-full h-[420px] sm:h-[520px] overflow-hidden rounded-3xl border border-line cursor-grab active:cursor-grabbing select-none">
 
       {/* Edge fade */}
-      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-background via-transparent to-background" />
-      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-background via-transparent to-background" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-r from-background via-transparent to-background" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-b from-background via-transparent to-background" />
 
       {/* Draggable cluster — x/y motion values exposed so icons can read them */}
       <motion.div
@@ -182,11 +183,10 @@ export function SkillsBubbles({ dragHint }: { dragHint: string }) {
           />
         ))}
       </motion.div>
+      </div>
 
       {/* Drag hint */}
-      <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 z-20 text-xs font-medium text-foreground/30 select-none">
-        {dragHint}
-      </p>
+      <p className="mt-3 text-center font-mono text-xs text-muted select-none">{dragHint}</p>
     </div>
   );
 }

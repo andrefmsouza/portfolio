@@ -1,54 +1,89 @@
-# André Souza — Personal Portfolio
+# André Souza — Personal site & blog
 
-Personal portfolio built with Next.js 15, featuring a custom i18n implementation, dark/light mode, and an interactive Apple Watch–style skills section with real-time physics-based animations.
+Personal site and Markdown blog built with Next.js 16. Bilingual (PT/EN), statically generated, no database.
 
 **Live:** [andresouza.dev.br](https://andresouza.dev.br)
 
 ---
 
+## Writing a post
+
+Posts are Markdown files in `content/blog/<lang>/`. The file name becomes the URL.
+
+```
+content/blog/
+├── pt/
+│   └── meu-post.md   →  /pt/blog/meu-post
+└── en/
+    └── meu-post.md   →  /en/blog/meu-post
+```
+
+Every file starts with a frontmatter header:
+
+```yaml
+---
+title: "Post title"                 # required
+description: "One or two sentences" # used by Google and share previews
+date: 2026-10-19                     # required (YYYY-MM-DD)
+updated: 2026-11-02                  # optional
+tags: [nodejs, ai]                   # optional, lowercase
+cover: /images/blog/cover.png        # optional, file in public/images/blog/
+draft: true                          # optional — drafts only show in `npm run dev`
+---
+```
+
+- **Translations:** a file with the same name in `pt/` and `en/` is treated as a translation. The language switcher and the `hreflang` tags link them. A post can also exist in only one language.
+- **Images:** put them in `public/images/blog/` and reference `/images/blog/file.png`. Always write the alt text.
+- **Code:** fenced blocks get syntax highlighting (Shiki). Add a title with ` ```ts title="file.ts" ` and highlight lines with ` ```ts {3,5-7} `.
+- **Publishing:** commit and push. The build regenerates the pages, sitemap and RSS feed.
+
+---
+
+## What's included for search engines
+
+| Feature | Where |
+|---|---|
+| Server-rendered HTML per language, correct `<html lang>` | `src/app/[lang]/layout.tsx` |
+| Canonical URLs and `hreflang` alternates | `generateMetadata` in each page |
+| `sitemap.xml` (with language alternates) and `robots.txt` | `src/app/sitemap.ts`, `src/app/robots.ts` |
+| JSON-LD (`Person` on home, `BlogPosting` on posts) | `src/components/content.tsx` |
+| Generated Open Graph images for the site and each post | `opengraph-image.tsx` + `src/lib/og.tsx` |
+| RSS feed per language | `/pt/blog/feed.xml`, `/en/blog/feed.xml` |
+
+After deploying, submit `https://andresouza.dev.br/sitemap.xml` in [Google Search Console](https://search.google.com/search-console).
+
+---
+
 ## Tech stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| Framework | Next.js 15 (App Router) | File-based i18n routing via `[lang]` dynamic segment |
-| Language | TypeScript 5 | End-to-end type safety across components and dictionaries |
-| Styling | Tailwind CSS 4 | Utility-first with zero runtime |
-| Animations | Framer Motion | `useMotionValue` + `useTransform` for physics without re-renders |
-| Icons | react-icons | Tree-shakeable icon set |
-| Runtime | React 19 | Uses `use(params)` for async params in App Router |
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router, static generation) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS 4 with CSS-variable design tokens |
+| Animation | Framer Motion (respects `prefers-reduced-motion`) |
+| Markdown | unified · remark-gfm · rehype-pretty-code (Shiki) · gray-matter |
+| Fonts | Instrument Serif, Geist, Geist Mono |
 
 ---
 
 ## Notable implementation details
 
 ### i18n without a library
-Routing is handled by Next.js middleware that detects the browser language and redirects to `/pt` or `/en`. All content lives in two JSON dictionaries (`src/dictionaries/`). A `useTranslations` hook reads the active dictionary and exposes typed translation functions — no external i18n package required.
-
-```
-src/
-├── middleware.ts          # Detects language, redirects /  → /pt or /en
-├── i18n.config.ts         # Supported locales
-├── dictionaries/
-│   ├── en.json            # All English content
-│   └── pt.json            # All Portuguese content
-└── hooks/
-    └── useTranslations.ts # Hook that exposes t(), tWorkList(), tEducationList()
-```
+`src/proxy.ts` redirects paths without a locale using the `NEXT_LOCALE` cookie, then `Accept-Language`, then Portuguese. All UI copy lives in `src/dictionaries/{pt,en}.json` and is read on the server through `getDictionary()` in `src/lib/i18n.ts`, so each language ships its own HTML.
 
 ### Apple Watch–style skills section
-The skills section renders 21 icons arranged in three concentric rings. Each icon's scale is computed in real time from its distance to the screen centre as the user drags:
+21 icons in concentric rings. Each icon's scale is derived from its distance to the centre as the cluster is dragged:
 
 ```
 dist  = √( (iconX + dragX)² + (iconY + dragY)² )
 scale = clamp(MIN, MAX, MAX − (dist / MAX_DIST) × (MAX − MIN))
 ```
 
-This runs entirely through Framer Motion's `useMotionValue` + `useTransform` pipeline — the DOM is updated by the compositor thread without triggering any React re-renders. Z-index is also derived from scale so foreground icons always sit on top.
-
-Each icon is its own component (`IconBubble`) so that `useTransform` is called at the component level, as required by React's rules of hooks.
+It runs through Framer Motion's `useMotionValue` + `useTransform`, so dragging never triggers React re-renders.
 
 ### Theme
-Dark/light mode is stored in `localStorage` and applied synchronously before first paint via a script injected in the root layout, avoiding the flash-of-wrong-theme issue common in SSR apps.
+An inline script in `<head>` applies the saved theme (or the OS preference) before first paint, so there's no flash of the wrong theme.
 
 ---
 
@@ -59,30 +94,32 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-To test both languages: [/en](http://localhost:3000/en) and [/pt](http://localhost:3000/pt).
+Open [http://localhost:3000](http://localhost:3000). Drafts are visible in dev mode only.
 
 ---
 
 ## Project structure
 
 ```
+content/blog/{pt,en}/        # Blog posts (Markdown)
 src/
 ├── app/
 │   ├── [lang]/
-│   │   ├── layout.tsx     # Language validation
-│   │   └── page.tsx       # Main page — renders all sections
-│   ├── layout.tsx         # Root layout (metadata, fonts, ThemeProvider)
-│   └── globals.css
-├── components/
-│   ├── SkillsBubbles.tsx  # Interactive Apple Watch–style skills
-│   └── ThemeProvider.tsx
-├── dictionaries/
-│   ├── en.json
-│   └── pt.json
-├── hooks/
-│   ├── useTranslations.ts
-│   └── useTheme.ts
-└── middleware.ts
+│   │   ├── layout.tsx       # Root layout: <html lang>, fonts, metadata, header/footer
+│   │   ├── page.tsx         # Home
+│   │   ├── opengraph-image.tsx
+│   │   └── blog/
+│   │       ├── page.tsx               # Post list
+│   │       ├── [slug]/page.tsx        # Post
+│   │       ├── [slug]/opengraph-image.tsx
+│   │       ├── tags/[tag]/page.tsx    # Posts by tag
+│   │       └── feed.xml/route.ts      # RSS
+│   ├── sitemap.ts
+│   ├── robots.ts
+│   ├── global-not-found.tsx
+│   └── globals.css          # Design tokens, article typography
+├── components/              # Header, timeline, skills, motion helpers…
+├── dictionaries/            # pt.json, en.json
+├── lib/                     # blog.ts, i18n.ts, og.tsx, site.ts
+└── proxy.ts                 # Locale redirect
 ```
