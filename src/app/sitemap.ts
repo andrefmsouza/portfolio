@@ -14,16 +14,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const lang of locales) {
     const posts = getAllPosts(lang).filter((p) => !p.draft);
 
-    entries.push(
-      { url: absoluteUrl(`/${lang}`), lastModified: now, changeFrequency: "monthly", priority: 1, alternates: bothLanguages("") },
-      {
+    entries.push({ url: absoluteUrl(`/${lang}`), lastModified: now, changeFrequency: "monthly", priority: 1, alternates: bothLanguages("") });
+
+    // Sem post publicado o blog fica fora do ar, então também fica fora do sitemap
+    if (posts.length > 0) {
+      entries.push({
         url: absoluteUrl(`/${lang}/blog`),
-        lastModified: posts[0] ? new Date(posts[0].updated ?? posts[0].date) : now,
+        lastModified: new Date(posts[0].updated ?? posts[0].date),
         changeFrequency: "weekly",
         priority: 0.8,
         alternates: bothLanguages("/blog"),
-      }
-    );
+      });
+    }
 
     for (const post of posts) {
       const languages = Object.fromEntries(

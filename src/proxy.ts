@@ -12,7 +12,9 @@ function preferredLocale(request: NextRequest): Locale {
     if (isLocale(code)) return code;
   }
 
-  return defaultLocale;
+  // Navegador em outro idioma (alemão, holandês...): quem é de fora entende melhor o inglês.
+  // Sem cabeçalho nenhum (robôs, por exemplo), fica o padrão do site.
+  return accept ? "en" : defaultLocale;
 }
 
 export function proxy(request: NextRequest) {

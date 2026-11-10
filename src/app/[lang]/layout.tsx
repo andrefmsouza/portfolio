@@ -1,28 +1,26 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/content";
 import { BackToTop } from "@/components/interactive";
 import { MotionProvider } from "@/components/motion";
 import { getDictionary, htmlLang, isLocale, locales, ogLocale, type Locale } from "@/lib/i18n";
-import { getAllPosts, getAllTags } from "@/lib/blog";
+import { getAllPosts, getAllTags, hasPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const instrument = Instrument_Serif({
-  variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
+const spaceGrotesk = Space_Grotesk({ variable: "--font-space-grotesk", subsets: ["latin"] });
 
 // Roda antes da pintura: aplica o tema salvo (ou o do sistema) sem "piscar"
 const themeScript = `(function(){try{var s=localStorage.getItem('theme')||(document.cookie.match(/(?:^|; )theme=(light|dark)/)||[])[1];var d=s?s==='dark':matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d)}catch(e){}})()`;
 
 export const dynamicParams = false;
+
+// Regera as páginas uma vez por dia para os anos de carreira ("{years}") virarem sozinhos
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -48,8 +46,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     creator: site.name,
     alternates: {
       canonical: `/${lang}`,
-      languages: { "pt-BR": "/pt", en: "/en", "x-default": "/pt" },
-      types: { "application/rss+xml": `/${lang}/blog/feed.xml` },
+      languages: { "pt-BR": "/pt", en: "/en", "x-default": "/en" },
+      types: hasPosts(lang) ? { "application/rss+xml": `/${lang}/blog/feed.xml` } : undefined,
     },
     openGraph: {
       type: "website",
@@ -62,6 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     twitter: { card: "summary_large_image" },
     icons: {
       icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
         { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
         { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
       ],
@@ -87,7 +86,7 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang[lang]}
-      className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}
+      className={`${geist.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -105,6 +104,7 @@ export default async function RootLayout({
             lang={lang}
             labels={{
               home: t["menu-home"],
+              projects: t["menu-projects"],
               skills: t["menu-skills"],
               journey: t["menu-journey"],
               blog: t["menu-blog"],
@@ -113,13 +113,14 @@ export default async function RootLayout({
               toggleMenu: t["toggle-menu"],
               changeLanguage: t["change-language"],
             }}
+            showBlog={hasPosts(lang)}
             otherLang={{
               posts: getAllPosts(other).map((p) => p.slug),
               tags: getAllTags(other).map((x) => x.tag),
             }}
           />
           <main id="main">{children}</main>
-          <SiteFooter lang={lang} t={t} />
+          <SiteFooter lang={lang} t={t} showBlog={hasPosts(lang)} />
           <BackToTop label={t["back-to-top"]} />
         </MotionProvider>
       </body>

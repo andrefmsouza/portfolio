@@ -1,17 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
 import type { Locale } from "@/lib/i18n";
 
-type NavKey = "home" | "skills" | "journey" | "blog" | "contact";
+type NavKey = "home" | "projects" | "skills" | "journey" | "blog" | "contact";
 
 interface Props {
   lang: Locale;
   labels: Record<NavKey, string> & { toggleTheme: string; toggleMenu: string; changeLanguage: string };
+  /** Falso enquanto não houver post publicado: o link do blog sai do menu */
+  showBlog: boolean;
   /** Slugs e tags que existem no outro idioma — evita mandar o visitante para um 404 ao trocar de idioma */
   otherLang: { posts: string[]; tags: string[] };
 }
@@ -19,6 +21,7 @@ interface Props {
 // id da seção na home → item do menu
 const SECTIONS: Record<string, NavKey> = {
   home: "home",
+  projects: "projects",
   skills: "skills",
   journey: "journey",
   writing: "blog",
@@ -48,6 +51,17 @@ function useActiveSection(enabled: boolean) {
   return active;
 }
 
+// Mesma regra do script inline do layout: tema salvo ou, sem ele, o do sistema
+function applyStoredTheme() {
+  let saved: string | null = null;
+  try {
+    saved = localStorage.getItem("theme");
+  } catch {}
+  saved ??= document.cookie.match(/(?:^|; )theme=(light|dark)/)?.[1] ?? null;
+  const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.classList.toggle("dark", dark);
+}
+
 function toggleTheme() {
   const root = document.documentElement;
   const next = root.classList.contains("dark") ? "light" : "dark";
@@ -57,7 +71,7 @@ function toggleTheme() {
   } catch {}
 }
 
-export function SiteHeader({ lang, labels, otherLang }: Props) {
+export function SiteHeader({ lang, labels, showBlog, otherLang }: Props) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -77,6 +91,9 @@ export function SiteHeader({ lang, labels, otherLang }: Props) {
     return `/${other}${rest}`;
   })();
 
+  // Trocar de idioma recria o <html> sem a classe do tema, e o script inline não roda de novo
+  useLayoutEffect(applyStoredTheme, [lang]);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -86,11 +103,26 @@ export function SiteHeader({ lang, labels, otherLang }: Props) {
 
   const links: { key: NavKey; href: string }[] = [
     { key: "home", href: `/${lang}#home` },
+    { key: "projects", href: `/${lang}#projects` },
     { key: "skills", href: `/${lang}#skills` },
     { key: "journey", href: `/${lang}#journey` },
-    { key: "blog", href: `/${lang}/blog` },
+    ...(showBlog ? [{ key: "blog" as const, href: `/${lang}/blog` }] : []),
     { key: "contact", href: `/${lang}#contact` },
   ];
+
+  // Na home, os links de seção (e o logo) rolam a página por conta própria: o Next ignora
+  // o clique quando o endereço já termina com o mesmo #hash, e a página não se mexia
+  function scrollToSection(event: MouseEvent<HTMLAnchorElement>, href: string) {
+    if (!isHome) return;
+    const [path, hash] = href.split("#");
+    if (path !== `/${lang}`) return; // ex.: o link do blog segue a navegação normal
+
+    event.preventDefault();
+    const target = hash ? document.getElementById(hash) : null;
+    if (target) target.scrollIntoView();
+    else window.scrollTo({ top: 0 });
+    if (window.location.pathname + window.location.hash !== href) window.history.pushState(null, "", href);
+  }
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
@@ -103,6 +135,7 @@ export function SiteHeader({ lang, labels, otherLang }: Props) {
       >
         <Link
           href={`/${lang}`}
+          onClick={(event) => scrollToSection(event, `/${lang}`)}
           className="group flex items-center gap-2 rounded-full px-3 py-1.5 font-mono text-sm tracking-tight"
           aria-label="André Souza"
         >
@@ -117,6 +150,7 @@ export function SiteHeader({ lang, labels, otherLang }: Props) {
               <li key={link.key} className="relative">
                 <Link
                   href={link.href}
+                  onClick={(event) => scrollToSection(event, link.href)}
                   className={`relative z-10 block rounded-full px-4 py-2 transition-colors ${
                     active === link.key ? "text-foreground" : "text-muted hover:text-foreground"
                   }`}
@@ -187,8 +221,11 @@ export function SiteHeader({ lang, labels, otherLang }: Props) {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between rounded-2xl px-4 py-3 font-serif text-2xl ${
+                    onClick={(event) => {
+                      setMenuOpen(false);
+                      scrollToSection(event, link.href);
+                    }}
+                    className={`flex items-center justify-between rounded-2xl px-4 py-3 font-display text-2xl ${
                       active === link.key ? "bg-surface" : ""
                     }`}
                   >

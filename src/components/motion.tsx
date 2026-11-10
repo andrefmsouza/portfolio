@@ -80,7 +80,7 @@ export function SplitText({
 }
 
 /** Número que conta do zero até o valor quando aparece na tela */
-export function CountUp({ value, suffix = "" }: { value: number; suffix?: string }) {
+export function CountUp({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   // Começa no valor final para o HTML do servidor (e o Google) verem o número certo
@@ -98,6 +98,7 @@ export function CountUp({ value, suffix = "" }: { value: number; suffix?: string
 
   return (
     <span ref={ref} className="tabular-nums">
+      {prefix}
       {display}
       {suffix}
     </span>

@@ -16,6 +16,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ lang: stri
   const lang = (await params).lang as Locale;
   const t = getDictionary(lang);
   const posts = getAllPosts(lang).filter((p) => !p.draft);
+  if (posts.length === 0) return new Response(null, { status: 404 });
 
   const items = posts
     .map((post) => {

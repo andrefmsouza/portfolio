@@ -8,6 +8,8 @@ Personal site and Markdown blog built with Next.js 16. Bilingual (PT/EN), static
 
 ## Writing a post
 
+The blog is hidden while there are no published posts: no menu or footer link, no sitemap entry, and `/blog` and the feed return 404. It comes back on its own, per language, with the first published post.
+
 Posts are Markdown files in `content/blog/<lang>/`. The file name becomes the URL.
 
 ```
@@ -63,7 +65,7 @@ After deploying, submit `https://andresouza.dev.br/sitemap.xml` in [Google Searc
 | Styling | Tailwind CSS 4 with CSS-variable design tokens |
 | Animation | Framer Motion (respects `prefers-reduced-motion`) |
 | Markdown | unified · remark-gfm · rehype-pretty-code (Shiki) · gray-matter |
-| Fonts | Instrument Serif, Geist, Geist Mono |
+| Fonts | Space Grotesk, Geist, Geist Mono |
 
 ---
 

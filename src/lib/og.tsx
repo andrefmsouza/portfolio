@@ -37,11 +37,11 @@ export async function renderOgImage({
   let fonts: { name: string; data: ArrayBuffer; style: "normal"; weight: 400 }[] = [];
   try {
     const [serif, mono] = await Promise.all([
-      loadGoogleFont("Instrument Serif", text),
+      loadGoogleFont("Space Grotesk", text),
       loadGoogleFont("Geist Mono", text),
     ]);
     fonts = [
-      { name: "Instrument Serif", data: serif, style: "normal", weight: 400 },
+      { name: "Space Grotesk", data: serif, style: "normal", weight: 400 },
       { name: "Geist Mono", data: mono, style: "normal", weight: 400 },
     ];
   } catch {
@@ -67,7 +67,7 @@ export async function renderOgImage({
           <span style={{ color: "#7d5aa4" }}>{"}"}</span>
           <span style={{ marginLeft: 24, textTransform: "uppercase", letterSpacing: 2 }}>{eyebrow}</span>
         </div>
-        <div style={{ display: "flex", fontFamily: "Instrument Serif", fontSize: title.length > 60 ? 72 : 92, lineHeight: 1.05, letterSpacing: -1 }}>
+        <div style={{ display: "flex", fontFamily: "Space Grotesk", fontSize: title.length > 60 ? 60 : 80, lineHeight: 1.08, letterSpacing: -2 }}>
           {title}
         </div>
         <div

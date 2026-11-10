@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { BlogIndex } from "@/components/BlogIndex";
+import { hasPosts } from "@/lib/blog";
 import { getDictionary, ogLocale, type Locale } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -10,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: t["blog-description"],
     alternates: {
       canonical: `/${lang}/blog`,
-      languages: { "pt-BR": "/pt/blog", en: "/en/blog", "x-default": "/pt/blog" },
+      languages: { "pt-BR": "/pt/blog", en: "/en/blog", "x-default": "/en/blog" },
       types: { "application/rss+xml": `/${lang}/blog/feed.xml` },
     },
     openGraph: {
@@ -25,5 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
   const lang = (await params).lang as Locale;
+  if (!hasPosts(lang)) notFound();
   return <BlogIndex lang={lang} />;
 }

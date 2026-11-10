@@ -15,7 +15,7 @@ export default function NotFound() {
             const t = getDictionary(lang);
             return (
               <div key={lang} lang={lang}>
-                <h1 className="font-serif text-5xl leading-none md:text-6xl">{t["not-found-title"]}</h1>
+                <h1 className="font-display text-3xl leading-tight md:text-4xl">{t["not-found-title"]}</h1>
                 <p className="mt-6 max-w-sm leading-relaxed text-muted">{t["not-found-description"]}</p>
                 <Link
                   href={`/${lang}`}

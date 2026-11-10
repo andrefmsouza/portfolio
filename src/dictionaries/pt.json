@@ -1,16 +1,18 @@
 {
   "menu-home": "Início",
+  "menu-projects": "Projetos",
   "menu-skills": "Habilidades",
   "menu-journey": "Jornada",
   "menu-contact": "Contato",
-  "hello": "Olá, eu sou",
+  "hello": "Lead Software Engineer",
   "name": "André Souza",
-  "description": "Engenheiro de software desde 2013. Hoje coordeno a operação técnica na iScholar, uma plataforma EdTech com mais de 100 mil usuários ativos por dia, e escrevo aqui sobre o que venho estudando e construindo.",
-  "skills": "Habilidades",
-  "skills-description": "Tecnologias e ferramentas com as quais venho trabalhando ao longo da minha jornada.",
+  "name-suffix": "",
+  "description": "Engenharia para fazer funcionar, criatividade para fazer diferente. Desde 2013 construo soluções de ponta a ponta, de APIs e integrações a aplicativos e automações com IA. Meu trabalho vai além do software. Fique à vontade para explorar.",
+  "skills": "Caixa de ferramentas",
+  "skills-description": "No dia a dia uso Node.js, TypeScript, React, React Native e PHP, com IA em quase tudo. Se o problema pedir outra ferramenta, eu aprendo.",
   "skills-drag-hint": "arraste para explorar",
-  "journey": "Minha trajetória",
-  "journey-description": "Engenheiro de software desde 2013, com experiência em ferramentas internas, sistemas ERP, produtos SaaS e automação com IA. Minha formação em Design Thinking, Gestão de TI e Storytelling Digital me mantém transitando naturalmente entre código, processos e pessoas. Passei 7 anos na Rivelli construindo mais de 40 aplicações internas e, em seguida, me juntei à iScholar — plataforma EdTech SaaS com mais de 100 mil usuários ativos diários — onde evolui de Engenheiro de Software a Sênior e, agora, Coordenador Técnico.",
+  "journey": "Como cheguei até aqui",
+  "journey-description": "Dois capítulos, por enquanto. Na Rivelli, passei sete anos criando sistemas para resolver os problemas de cada área da empresa, do financeiro à logística. Foram mais de 40 aplicações e uma migração de ERP para o SAP S/4HANA. No iScholar, desde 2021, fui de engenheiro a líder de um time. No caminho fiz três pós, em Design Thinking, Gestão de TI e Storytelling Digital, porque código sozinho não resolve tudo.",
   "read-more": "Ler mais",
   "read-less": "Ler menos",
   "work-experience": "Experiência profissional",
@@ -21,34 +23,66 @@
       "period": "Abr 2021 – Atualmente",
       "roles": [
         {
-          "role": "Coordenador Técnico",
+          "role": "Lead Software Engineer",
           "period": "Abr 2025 – Atualmente",
           "description": [
-            "Lidero a operação técnica de um time de engenheiros do suporte, conduzindo dailies, 1:1s, priorização e distribuição de tickets, oferecendo suporte técnico aos desenvolvedores e fazendo a ponte entre suporte, engenharia e áreas de negócio.",
-            "Aumentei significativamente a produtividade do time com a introdução de automações orientadas a IA, integrações via MCP e melhorias de processo.",
-            "Atuo em parceria com a gerência em propostas de melhoria de infraestrutura e ferramentas; levo métricas e propostas que contribuem para mais de USD 3.000 de economia operacional mensal no setor.",
-            "Implantei visibilidade do sistema que antes não existia, substituindo a percepção subjetiva do gestor por priorização baseada em dados e SLAs."
+            "Lidero o time de engenharia que cuida de correções, integrações e melhorias da plataforma. Defino as prioridades, acompanho cada pessoa de perto e entro junto nos problemas mais difíceis.",
+            "Mais que triplicamos as entregas com o mesmo esforço, usando automações de IA e integrações via MCP criadas pelo próprio time. O modelo agora está sendo levado para outros setores.",
+            "Puxei uma análise de custos que, junto com a gerência, cortou mais de US$ 3 mil por mês em várias áreas da empresa. Hoje o time cria monitores que seguem baixando a conta e melhorando a performance da plataforma.",
+            "Implantamos o monitoramento de erros da plataforma, e a fila passou a ser priorizada por dados e SLAs.",
+            "Criamos ferramentas internas com IA que já atendem mais de um setor da empresa."
+          ],
+          "skills": [
+            "PHP",
+            "TypeScript",
+            "React",
+            "React Native",
+            "AWS",
+            "REST APIs",
+            "MCP",
+            "LLMs"
           ]
         },
         {
           "role": "Engenheiro de Software Sênior",
           "period": "Set 2024 – Abr 2025",
           "description": [
-            "Atuei com autonomia técnica em projetos complexos, com voz ativa em decisões arquiteturais ao longo de todo o ciclo de desenvolvimento, da concepção à produção.",
-            "Servi como referência técnica para o time, apoiando desenvolvedores e desbloqueando entregas.",
-            "Liderei a implementação e o code review do app mobile da empresa em React Native, garantindo publicação fluida na App Store e na Google Play e aprimorando os pipelines de CI/CD.",
-            "Responsável pela manutenção contínua da API REST da plataforma e do aplicativo mobile ao longo de várias releases."
+            "Liderei a implementação e o code review do app em React Native, publicado na App Store e no Google Play.",
+            "Toquei projetos complexos da ideia à produção e participei das decisões de arquitetura.",
+            "Virei referência técnica do time e ajudei outros desenvolvedores a destravar entregas.",
+            "Melhorei o pipeline de CI/CD e mantive a API REST e o app ao longo de várias releases."
+          ],
+          "skills": [
+            "PHP",
+            "TypeScript",
+            "React",
+            "React Native",
+            "AWS",
+            "REST APIs",
+            "CI/CD"
           ]
         },
         {
           "role": "Engenheiro de Software",
           "period": "Abr 2021 – Set 2024",
           "description": [
-            "Desenvolvi e mantive produtos centrais da plataforma, com mais de 100 mil usuários ativos diários, contribuindo com desenhos de solução e melhorias incorporadas ao produto.",
-            "Participei da implementação do Pix (sistema de pagamentos instantâneos do Brasil) e da manutenção contínua dos fluxos de pagamento.",
-            "Responsável pela manutenção e publicação do app mobile nas lojas (App Store / Google Play) e pela manutenção da API REST da plataforma.",
-            "Atuei ativamente na definição de UX/UI, equilibrando experiência do usuário, funcionalidade e performance.",
-            "Reconhecido com o prêmio de performance da empresa em 2023 por criatividade e inovação dentro do time."
+            "Recebi o prêmio de performance da empresa em 2023, por criatividade e inovação.",
+            "Desenvolvi e mantive, em PHP, módulos centrais de uma plataforma usada por mais de 100 mil pessoas por dia.",
+            "Participei da integração com o Pix e da manutenção dos fluxos de pagamento.",
+            "Fiz melhorias no app e integrações com parceiros que ajudaram a conquistar novos clientes e a aumentar a satisfação das escolas.",
+            "Cuidei da API REST da plataforma e da publicação do app nas lojas.",
+            "Participei das decisões de UX/UI, pesando experiência, funcionalidade e performance."
+          ],
+          "skills": [
+            "PHP",
+            "TypeScript",
+            "React",
+            "React Native",
+            "Angular",
+            "AWS",
+            "REST APIs",
+            "Pix",
+            "UX/UI"
           ]
         }
       ]
@@ -62,71 +96,58 @@
           "role": "Analista de Migração e Integração SAP S/4HANA",
           "period": "Jul 2019 – Jun 2020",
           "description": [
-            "Integrei um time multidisciplinar na migração do ERP corporativo para o SAP S/4HANA.",
-            "Extraí e estruturei dados do sistema legado, gerei arquivos de importação para o SAP e desenvolvi integrações com parceiros de negócio.",
-            "Mantive colaboração próxima com key users, consultores SAP e parceiros externos para garantir que as integrações atendessem aos requisitos de cada área.",
-            "Entreguei toda a estrutura de integração documentada e plenamente operacional para a continuidade do projeto."
+            "Fiz parte do time que migrou o ERP da empresa para o SAP S/4HANA.",
+            "Extraí e organizei os dados do sistema antigo e gerei os arquivos de importação para o SAP.",
+            "Desenvolvi as integrações com parceiros, lado a lado com key users e consultores SAP, para que cada uma atendesse a área responsável.",
+            "Entreguei toda a estrutura de integração documentada e funcionando."
+          ],
+          "skills": [
+            "SAP S/4HANA",
+            "SOAP",
+            "REST APIs",
+            "Data migration"
           ]
         },
         {
           "role": "Engenheiro de Software",
           "period": "Jul 2013 – Jun 2020",
           "description": [
-            "Construí um ecossistema interno com mais de 40 aplicações cobrindo finanças, logística, vendas, RH e controle de estoque, integradas via APIs REST e webservices.",
-            "Reduzi processos de dias para horas com automações de rotinas operacionais via interfaces mobile e web.",
-            "Entreguei aplicações mobile, dashboards de gestão em tempo real e soluções embarcadas com Arduino e Raspberry Pi.",
-            "Responsável por todo o ciclo: levantamento de requisitos com as áreas de negócio, implementação, deploy e treinamento de usuários finais.",
-            "Time reconhecido como estratégico pela liderança pela entrega de reduções operacionais significativas para a empresa."
+            "Em dupla com outro desenvolvedor, criei mais de 40 aplicações internas usadas por mais de 2 mil funcionários, de finanças e RH a logística e exportação. Do levantamento com as áreas ao deploy nos servidores da empresa.",
+            "Criei um controle de financiamentos integrado ao Banco Central, que recalcula os juros todo dia por CDI, Selic e TJLP, e um simulador de rentabilidade por produto que a diretoria passou a usar para decidir o mix de vendas.",
+            "Tirei processos do papel: um totem de holerites que livrou o departamento pessoal de uma tarefa manual todo mês, uma pesquisa de clima anônima com resultados em gráficos para o RH e um app de pré-cadastro que agilizou a aprovação de novos clientes.",
+            "Levei os dados do ERP para quem decide, com dashboards e painéis nas TVs dos setores, atualizados ao longo do dia, para todo mundo acompanhar as metas de vendas e produção.",
+            "Juntei 7 demandas de setores diferentes em um único aplicativo configurável, como a inspeção de veículos e equipamentos longe da oficina. Menos tempo de desenvolvimento e manutenção em dia.",
+            "Automatizei exportações, extrações de dados e integrações com o ERP, com parceiros e com o rastreamento da frota. Cheguei até a controlar equipamentos remotos com Arduino e Raspberry Pi."
+          ],
+          "skills": [
+            "PHP",
+            "JavaScript",
+            "AngularJS",
+            "Angular",
+            "MySQL",
+            "SOAP",
+            "REST APIs",
+            "Arduino",
+            "Raspberry Pi"
           ]
         }
       ]
     }
   ],
-  "education": "Estudos e Certificações",
+  "education": "Formação e certificações",
   "education-list": [
     {
       "id": 1,
-      "school": "IFET Campus Barbacena",
-      "period": "2009 - 2013",
-      "course": "Graduação em Sistemas para Internet",
-      "description": [
-        "Arquitetura de Computadores",
-        "Desenvolvimentos de Páginas Web",
-        "Fundamentos Matemáticos da Computação",
-        "Gestão Empresarial Básica",
-        "Informática Instrumental",
-        "Redação Técnica",
-        "Metodologia de Pesquisa Científica e Tecnológica",
-        "Sistemas Operacionais",
-        "Engenharia de Software",
-        "Lógica de Programação",
-        "Empreendedorismo",
-        "Gestão de Projetos",
-        "Redes de Computadores",
-        "Estrutura de Dados I",
-        "Estrutura de Dados II",
-        "Linguagem de Programação",
-        "Protocolos de Comunicação",
-        "Sistemas Distribuídos",
-        "Sistemas Operacionais Distribuídos",
-        "Teoria da Comunicação",
-        "Web Services",
-        "Linguagem de Programação Visual",
-        "Tecnologia Orientada a Objetos",
-        "Estatística",
-        "Gerência de Sistemas de Informação",
-        "Projetos de Redes de Computadores",
-        "TCP-IP e Roteamento",
-        "Tecnologias Móveis e Sem Fio",
-        "Análise de Sistemas",
-        "Projeto de Sistemas de Banco de Dados"
-      ]
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Pós-Graduação em Gestão em TI",
+      "description": []
     },
     {
       "id": 2,
-      "school": "Uptime",
-      "period": "2015",
-      "course": "Inglês Avançado",
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Pós-Graduação em Storytelling Digital",
       "description": []
     },
     {
@@ -144,91 +165,60 @@
       "school": "UniCesumar",
       "period": "2018 - 2021",
       "course": "Pós-Graduação em Design Thinking e Criatividade nas Organizações",
-      "description": [
-        "Universo em pesquisa e prática",
-        "Metodologia do Ensino e da Pesquisa",
-        "Introdução a Criatividade no Ambiente Organizacional",
-        "Economia Criativa e Colaborativa",
-        "Fundamentos do Design Thinking",
-        "Design Thinking na Prática",
-        "Gamificação Aplicada aos Negócios",
-        "Comunicação e Marketing na Era Pós Digital",
-        "Metodologias Ágeis de Negócios e Mapas Metais",
-        "Design Thinking aplicado ao Branding",
-        "Novos Modelos de Negócio"
-      ]
+      "description": []
     },
     {
       "id": 5,
-      "school": "UniFatecie",
-      "period": "2024",
-      "course": "Pós-Graduação em Gestão em TI",
-      "description": [
-        "Empreendedorismo e Inovação",
-        "Gerência de Projetos em TI",
-        "Gestão de Projetos",
-        "Gestão e Governança em TI",
-        "Mapeamento e Gerenciamento de Processos",
-        "Negócios Eletrônicos",
-        "Raciocínio Lógico",
-        "Redes de Computadores e Segurança",
-        "Sistema de Informação Gerencial",
-        "Tópicos Especiais em TI"
-      ]
-    },
-    {
-      "id": 6,
-      "school": "UniFatecie",
-      "period": "2024",
-      "course": "Pós-Graduação em Storytelling Digital",
-      "description": [
-        "Direção de Arte",
-        "Dominar o ChatGPT para turbinar a produtividade",
-        "Fotografia Digital",
-        "Linguagem Visual Gráfica",
-        "Marketing Digital",
-        "Meios de Expressão",
-        "Processo Criativo",
-        "Produção e Edição de Audiovisual",
-        "Roteiros",
-        "Técnicas de Comunicação para Vender sua Ideia e Conquistar o Mundo"
-      ]
+      "school": "IFET Campus Barbacena",
+      "period": "2009 - 2013",
+      "course": "Graduação em Sistemas para Internet",
+      "description": []
     }
   ],
   "contact": "Vamos conversar",
-  "contact-description": "Quer trocar uma ideia sobre um projeto, uma vaga ou algo que você leu por aqui? Meu e-mail está sempre aberto, e também respondo pelo LinkedIn.",
-  "meta-title": "André Souza — Engenheiro de Software Sênior",
-  "meta-description": "Engenheiro de software há mais de 12 anos, com foco em Node.js, TypeScript, React, React Native e AWS. Coordenador Técnico na iScholar. Blog sobre o que venho estudando e construindo.",
+  "contact-description": "Tem uma ideia, um projeto ou um problema cabeludo? Me chama. Engenharia e criatividade ficam por minha conta.",
+  "meta-title": "André Souza | Lead Software Engineer",
+  "meta-description": "Lead Software Engineer em Belo Horizonte. Engenharia para fazer funcionar, criatividade para fazer diferente: APIs, integrações e automações com IA desde 2013.",
   "menu-blog": "Blog",
-  "status": "Coordenador Técnico na iScholar",
+  "status": "Belo Horizonte, Brasil · Inglês avançado",
+  "job-title": "Lead Software Engineer",
+  "hero-stack": "Node.js · TypeScript · React · APIs REST · AWS · Automações com IA",
   "stats": [
     {
-      "value": 12,
+      "value": "{years}",
+      "prefix": "",
       "suffix": "+",
-      "label": "anos escrevendo software"
-    },
-    {
-      "value": 40,
-      "suffix": "+",
-      "label": "aplicações internas entregues"
+      "label": "anos criando software"
     },
     {
       "value": 100,
+      "prefix": "",
       "suffix": "k+",
-      "label": "usuários ativos por dia na plataforma"
+      "label": "pessoas por dia na plataforma que ajudo a construir"
+    },
+    {
+      "value": 40,
+      "prefix": "US$ ",
+      "suffix": "k+",
+      "label": "por ano em custos cortados, e aumentando"
+    },
+    {
+      "value": 3,
+      "prefix": "",
+      "suffix": "x+",
+      "label": "mais entregas do time que lidero, com o mesmo esforço"
     }
   ],
-  "cta-blog": "Ler o blog",
-  "cta-contact": "Entrar em contato",
+  "cta-blog": "Ver projetos",
+  "cta-contact": "Fale comigo",
   "scroll-hint": "role para ver mais",
-  "latest-posts": "Escritos recentes",
-  "latest-posts-description": "Notas sobre o que estou estudando, testando e aprendendo no trabalho.",
+  "latest-posts": "Últimos posts",
   "see-all-posts": "Ver todos os posts",
   "copy-email": "Copiar e-mail",
   "email-copied": "E-mail copiado",
   "blog-title": "Blog",
-  "blog-description": "Anotações sobre o que venho estudando e construindo: engenharia de software, IA aplicada, liderança técnica e o que mais aparecer pelo caminho.",
-  "blog-empty": "Nenhum post publicado ainda. Volte em breve.",
+  "blog-description": "Engenharia de software, IA, carreira e os bastidores dos meus projetos. Por André Souza.",
+  "blog-empty": "Ainda não tem nada por aqui. Volte em breve.",
   "blog-all": "Todos",
   "blog-tag-title": "Posts sobre",
   "reading-time": "min de leitura",
@@ -238,14 +228,76 @@
   "copy": "Copiar",
   "copied": "Copiado",
   "draft": "Rascunho",
-  "not-found-title": "Página não encontrada",
-  "not-found-description": "O endereço pode ter mudado ou o conteúdo não existe mais.",
+  "not-found-title": "Essa página não existe",
+  "not-found-description": "O endereço mudou ou o conteúdo saiu do ar. O resto do site continua no lugar.",
   "not-found-cta": "Voltar para o início",
-  "footer-note": "Feito com Next.js e escrito em Markdown.",
+  "footer-note": "Engenharia e criatividade desde 2013.",
   "rss": "RSS",
   "skip-to-content": "Pular para o conteúdo",
   "toggle-theme": "Alternar tema",
   "toggle-menu": "Abrir menu",
   "back-to-top": "Voltar ao topo",
-  "change-language": "Mudar idioma"
+  "change-language": "Mudar idioma",
+  "projects": "Ideias que saíram do papel",
+  "projects-description": "De uma API a um jogo. Onde o código é aberto, tem link. Onde não é, eu conto como funciona.",
+  "project-code": "Ver código",
+  "project-private": "Código privado",
+  "project-open": "Código aberto",
+  "project-wip": "Em andamento",
+  "projects-list": [
+    {
+      "id": "pao-nosso",
+      "name": "Pão Nosso",
+      "status": "open",
+      "featured": true,
+      "summary": "O café da manhã da empresa, pedido direto na padaria. Uma plataforma B2B em que as padarias se cadastram por API, publicam o catálogo e recebem os pedidos por webhook.",
+      "highlights": [
+        "Servidor MCP remoto: um assistente como o Claude consulta o catálogo, compara preços entre padarias e faz o pedido sozinho, dentro do limite de gasto de cada chave de API.",
+        "Webhooks assinados que não se perdem: pedido e notificação são gravados na mesma transação, e um worker cuida da entrega com novas tentativas e backoff exponencial.",
+        "Segurança desde a primeira linha: senhas com scrypt, chaves de API guardadas como hash, proteção contra SSRF e pedidos idempotentes.",
+        "Testes de integração em PostgreSQL de verdade, e uma demo que sobe a API, o worker e uma padaria de teste com um comando."
+      ],
+      "stack": [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "MCP",
+        "Vitest",
+        "Docker"
+      ],
+      "link": "https://github.com/andrefmsouza/pao-nosso-backend"
+    },
+    {
+      "id": "consultorio",
+      "name": "Consultório de psicologia com IA local",
+      "status": "private",
+      "summary": "Sistema de acompanhamento de pacientes feito para um consultório real. Dado de paciente pede cuidado, então toda a IA roda no próprio computador.",
+      "highlights": [
+        "O áudio das sessões é transcrito na própria máquina.",
+        "Um modelo de linguagem local gera o resumo de cada paciente.",
+        "Os documentos ficam guardados e organizados no Google Drive."
+      ],
+      "stack": [
+        "IA local",
+        "Transcrição de áudio",
+        "Google Drive API"
+      ]
+    },
+    {
+      "id": "jogo",
+      "name": "Um livro virando jogo",
+      "status": "wip",
+      "summary": "Um livro sobre neurodiversidade que estou transformando em jogo. Os personagens têm TDAH, autismo e outros transtornos, e o jogo coloca você dentro de situações que muita gente vive sem ser entendida.",
+      "highlights": [
+        "Faço tudo sozinho, da escrita ao código, com a IA como ferramenta em cada etapa."
+      ],
+      "stack": [
+        "Game design",
+        "IA generativa",
+        "Escrita"
+      ]
+    }
+  ]
 }

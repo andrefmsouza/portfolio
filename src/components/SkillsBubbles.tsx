@@ -4,11 +4,11 @@ import { motion, useMotionValue, useTransform, MotionValue } from "framer-motion
 import { useState } from "react";
 import { TbBrandTypescript, TbBrandReactNative } from "react-icons/tb";
 import {
-  FaAngular, FaAws, FaBootstrap, FaCss3,
-  FaGit, FaHtml5, FaNodeJs, FaPython, FaReact, FaVuejs,
+  FaAngular, FaAws, FaDocker,
+  FaGit, FaNodeJs, FaPython, FaReact, FaVuejs,
 } from "react-icons/fa";
 import { RiJavascriptLine, RiNextjsFill, RiPhpLine, RiTailwindCssFill } from "react-icons/ri";
-import { SiAnthropic, SiArduino, SiMysql, SiOpenai } from "react-icons/si";
+import { SiAnthropic, SiArduino, SiMysql, SiOpenai, SiRaspberrypi } from "react-icons/si";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { IconType } from "react-icons";
 
@@ -42,26 +42,25 @@ const MAX_DIST  = 290;
 
 const skills: Skill[] = [
   { name: "Node.js",       Icon: FaNodeJs,          x: 0, y: 0, isCenter: true },
-  { name: "TypeScript",    Icon: TbBrandTypescript,  ...ringPos(0, 7, R1) },
-  { name: "React",         Icon: FaReact,            ...ringPos(1, 7, R1) },
-  { name: "AWS",           Icon: FaAws,              ...ringPos(2, 7, R1) },
-  { name: "React Native",  Icon: TbBrandReactNative, ...ringPos(3, 7, R1) },
-  { name: "JavaScript",    Icon: RiJavascriptLine,   ...ringPos(4, 7, R1) },
-  { name: "Anthropic",     Icon: SiAnthropic,        ...ringPos(5, 7, R1) },
-  { name: "OpenAI",        Icon: SiOpenai,           ...ringPos(6, 7, R1) },
-  { name: "PHP",           Icon: RiPhpLine,          ...ringPos(0,  13, R2) },
-  { name: "Next.js",       Icon: RiNextjsFill,       ...ringPos(1,  13, R2) },
-  { name: "Git",           Icon: FaGit,              ...ringPos(2,  13, R2) },
-  { name: "Python",        Icon: FaPython,           ...ringPos(3,  13, R2) },
-  { name: "Tailwind",      Icon: RiTailwindCssFill,  ...ringPos(4,  13, R2) },
-  { name: "MySQL",         Icon: SiMysql,            ...ringPos(5,  13, R2) },
-  { name: "PostgreSQL",    Icon: BiLogoPostgresql,   ...ringPos(6,  13, R2) },
-  { name: "Vue.js",        Icon: FaVuejs,            ...ringPos(7,  13, R2) },
-  { name: "Angular",       Icon: FaAngular,          ...ringPos(8,  13, R2) },
-  { name: "Bootstrap",     Icon: FaBootstrap,        ...ringPos(9,  13, R2) },
-  { name: "CSS3",          Icon: FaCss3,             ...ringPos(10, 13, R2) },
-  { name: "HTML5",         Icon: FaHtml5,            ...ringPos(11, 13, R2) },
-  { name: "Arduino",       Icon: SiArduino,          ...ringPos(12, 13, R2) },
+  { name: "TypeScript",    Icon: TbBrandTypescript,  ...ringPos(0, 8, R1) },
+  { name: "PHP",           Icon: RiPhpLine,          ...ringPos(1, 8, R1) },
+  { name: "React",         Icon: FaReact,            ...ringPos(2, 8, R1) },
+  { name: "React Native",  Icon: TbBrandReactNative, ...ringPos(3, 8, R1) },
+  { name: "AWS",           Icon: FaAws,              ...ringPos(4, 8, R1) },
+  { name: "Angular",       Icon: FaAngular,          ...ringPos(5, 8, R1) },
+  { name: "Anthropic",     Icon: SiAnthropic,        ...ringPos(6, 8, R1) },
+  { name: "OpenAI",        Icon: SiOpenai,           ...ringPos(7, 8, R1) },
+  { name: "Docker",        Icon: FaDocker,           ...ringPos(0,  11, R2) },
+  { name: "MySQL",         Icon: SiMysql,            ...ringPos(1,  11, R2) },
+  { name: "PostgreSQL",    Icon: BiLogoPostgresql,   ...ringPos(2,  11, R2) },
+  { name: "Next.js",       Icon: RiNextjsFill,       ...ringPos(3,  11, R2) },
+  { name: "JavaScript",    Icon: RiJavascriptLine,   ...ringPos(4,  11, R2) },
+  { name: "Vue.js",        Icon: FaVuejs,            ...ringPos(5,  11, R2) },
+  { name: "Python",        Icon: FaPython,           ...ringPos(6,  11, R2) },
+  { name: "Git",           Icon: FaGit,              ...ringPos(7,  11, R2) },
+  { name: "Tailwind",      Icon: RiTailwindCssFill,  ...ringPos(8,  11, R2) },
+  { name: "Arduino",       Icon: SiArduino,          ...ringPos(9,  11, R2) },
+  { name: "Raspberry Pi",  Icon: SiRaspberrypi,      ...ringPos(10, 11, R2) },
 ];
 
 // ─── Per-icon component — hooks must be called at component level ────────────

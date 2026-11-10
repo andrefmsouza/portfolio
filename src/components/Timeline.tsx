@@ -8,7 +8,7 @@ export type TimelineEntry = {
   id: string;
   title: string;
   period: string;
-  items: { key: string; title: string; period?: string; bullets: string[] }[];
+  items: { key: string; title: string; period?: string; bullets: string[]; tags?: string[] }[];
 };
 
 interface Props {
@@ -70,8 +70,19 @@ export function Timeline({ entries, labels }: Props) {
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.6, delay: i * 0.08 }}
                 >
-                  <h4 className="font-serif text-2xl leading-tight">{item.title}</h4>
+                  <h4 className="font-display text-lg leading-tight">{item.title}</h4>
                   {item.period && <p className="mt-1 font-mono text-xs text-muted">{item.period}</p>}
+
+                  {/* Tecnologias sempre visíveis: é o que o recrutador procura de relance */}
+                  {item.tags && item.tags.length > 0 && (
+                    <ul className="mt-3 flex flex-wrap gap-1.5">
+                      {item.tags.map((tag) => (
+                        <li key={tag} className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[0.7rem] text-muted">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                   {expandable && (
                     <button

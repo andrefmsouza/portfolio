@@ -1,16 +1,18 @@
 {
   "menu-home": "Home",
+  "menu-projects": "Projects",
   "menu-skills": "Skills",
   "menu-journey": "Journey",
   "menu-contact": "Contact",
-  "hello": "Hi, I'm",
+  "hello": "Lead Software Engineer",
   "name": "André Souza",
-  "description": "Software engineer since 2013. I currently lead technical operations at iScholar, an EdTech platform with 100,000+ daily active users, and I write here about what I'm studying and building.",
-  "skills": "Skills",
-  "skills-description": "Technologies and tools that I've been working with along my journey.",
+  "name-suffix": "",
+  "description": "Engineering to make it work, creativity to make it different. Since 2013 I've been building end-to-end solutions, from APIs and integrations to apps and AI automations. My work goes beyond software. Feel free to look around.",
+  "skills": "Toolbox",
+  "skills-description": "Day to day it's Node.js, TypeScript, React, React Native and PHP, with AI in almost everything. If the problem calls for another tool, I learn it.",
   "skills-drag-hint": "drag to explore",
-  "journey": "My journey",
-  "journey-description": "Software engineer since 2013, with experience spanning internal tooling, ERP systems, SaaS products, and AI-driven automation. My background in Design Thinking, IT Management, and Digital Storytelling keeps me moving naturally between code, processes, and people. I spent 7 years at Rivelli building 40+ internal applications, then joined iScholar — a Brazilian EdTech SaaS serving 100,000+ daily active users — where I've grown from Software Engineer to Senior and now Technical Coordinator.",
+  "journey": "How I got here",
+  "journey-description": "Two chapters, so far. At Rivelli I spent seven years turning every department's problems into software: 40+ applications and an ERP migration to SAP S/4HANA. At iScholar, since 2021, I've gone from engineer to leading a team. Along the way I did three postgraduate degrees, in Design Thinking, IT Management and Digital Storytelling, because code alone doesn't solve everything.",
   "read-more": "Read more",
   "read-less": "Read less",
   "work-experience": "Work experience",
@@ -21,34 +23,66 @@
       "period": "Apr 2021 – Present",
       "roles": [
         {
-          "role": "Technical Coordinator",
+          "role": "Lead Software Engineer",
           "period": "Apr 2025 – Present",
           "description": [
-            "Lead the technical operations of a support engineering team, running daily standups, 1:1s, ticket prioritization, and technical guidance to unblock developers and act as the bridge between support, engineering, and business teams.",
-            "Significantly increased per-engineer throughput by introducing AI-driven automation, MCP integrations, and process improvements.",
-            "Partner with engineering management on infrastructure and tooling proposals; surface metrics and improvements that contribute to USD 3,000+ in monthly operational savings within the sector.",
-            "Established system observability that did not previously exist, replacing manager intuition with data-driven prioritization and SLAs."
+            "Lead the engineering team in charge of bug fixes, integrations and improvements on the platform. I set priorities, work closely with each person and jump in on the hardest problems.",
+            "More than tripled delivery with the same effort, using AI automations and MCP integrations built by the team itself. The model is now being rolled out to other departments.",
+            "Kicked off a cost analysis that, together with management, cut more than USD 3,000 a month across several areas of the company. The team now builds monitors that keep bringing costs down and platform performance up.",
+            "Rolled out error monitoring for the platform with the team, so the queue is now prioritized by data and SLAs.",
+            "Built in-house AI tools with the team that already serve more than one department."
+          ],
+          "skills": [
+            "PHP",
+            "TypeScript",
+            "React",
+            "React Native",
+            "AWS",
+            "REST APIs",
+            "MCP",
+            "LLMs"
           ]
         },
         {
           "role": "Senior Software Engineer",
           "period": "Sep 2024 – Apr 2025",
           "description": [
-            "Operated with technical autonomy on complex projects, with active voice in architectural decisions across the full development cycle, from conception to production.",
-            "Served as a technical reference for the team, supporting developers and unblocking deliveries.",
-            "Led implementation and code review of the company's React Native mobile app, ensuring smooth deployment to the App Store and Google Play, and improving CI/CD pipelines.",
-            "Owned ongoing maintenance of the platform's REST API and mobile application across multiple releases."
+            "Led the implementation and code review of the React Native app, shipped to the App Store and Google Play.",
+            "Ran complex projects from idea to production and took part in architecture decisions.",
+            "Became a technical reference for the team and helped other developers unblock their work.",
+            "Improved the CI/CD pipeline and kept the REST API and the app running across several releases."
+          ],
+          "skills": [
+            "PHP",
+            "TypeScript",
+            "React",
+            "React Native",
+            "AWS",
+            "REST APIs",
+            "CI/CD"
           ]
         },
         {
           "role": "Software Engineer",
           "period": "Apr 2021 – Sep 2024",
           "description": [
-            "Developed and maintained core platform products serving 100,000+ daily active users, contributing solution designs and improvements that were consistently incorporated into production.",
-            "Implemented Pix (Brazil's instant payment system) integration and ongoing maintenance of payment flows.",
-            "Owned mobile application maintenance and store releases (App Store / Google Play) and platform REST API maintenance.",
-            "Played an active role in UX/UI definition, balancing user experience with functionality and performance.",
-            "Recognized with the 2023 company performance award for creativity and innovation within the team."
+            "Received the company's 2023 performance award for creativity and innovation.",
+            "Built and maintained, in PHP, core modules of a platform used by 100,000+ people a day.",
+            "Worked on the Pix (Brazil's instant payment system) integration and maintained the payment flows.",
+            "Shipped app improvements and partner integrations that helped win new customers and raise school satisfaction.",
+            "Owned the platform's REST API and the app releases on both stores.",
+            "Took part in UX/UI decisions, weighing user experience, functionality and performance."
+          ],
+          "skills": [
+            "PHP",
+            "TypeScript",
+            "React",
+            "React Native",
+            "Angular",
+            "AWS",
+            "REST APIs",
+            "Pix",
+            "UX/UI"
           ]
         }
       ]
@@ -62,71 +96,58 @@
           "role": "SAP S/4HANA Migration & Integration Analyst",
           "period": "Jul 2019 – Jun 2020",
           "description": [
-            "Joined a multidisciplinary team to migrate the corporate ERP to SAP S/4HANA.",
-            "Extracted and structured data from the legacy system, generated import files for SAP, and developed integrations with business partners.",
-            "Maintained close collaboration with key users, SAP consultants, and external partners to ensure integrations met area-specific requirements.",
-            "Left the entire integration structure documented and fully operational for project continuity."
+            "Part of the team that migrated the company's ERP to SAP S/4HANA.",
+            "Extracted and organized data from the legacy system and generated the SAP import files.",
+            "Built the integrations with business partners, side by side with key users and SAP consultants, so each one met the needs of its area.",
+            "Delivered the whole integration layer documented and running."
+          ],
+          "skills": [
+            "SAP S/4HANA",
+            "SOAP",
+            "REST APIs",
+            "Data migration"
           ]
         },
         {
           "role": "Software Engineer",
           "period": "Jul 2013 – Jun 2020",
           "description": [
-            "Built an internal ecosystem of 40+ applications covering finance, logistics, sales, HR, and inventory control, integrated via REST APIs and webservices.",
-            "Cut multi-day processes down to hours by automating operational routines via mobile and web interfaces.",
-            "Delivered mobile applications, real-time management dashboards, and embedded solutions with Arduino and Raspberry Pi.",
-            "Owned the full development cycle: requirements gathering with business areas, implementation, deployment, and end-user training.",
-            "Team recognized as strategic by leadership for delivering significant operational cost reductions."
+            "As one of two developers, built 40+ internal applications used by 2,000+ employees, from finance and HR to logistics and export. From requirements with each department to deployment on the company's own servers.",
+            "Built a financing control system integrated with Brazil's Central Bank that recalculates interest daily (CDI, Selic, TJLP), and a product profitability simulator that leadership came to use when deciding the sales mix.",
+            "Took processes off paper: a payslip kiosk that freed HR from a manual task every month, an anonymous engagement survey with charted results, and a pre-registration app that sped up approval of new customers.",
+            "Brought ERP data to decision makers with dashboards and panels on TVs across departments, refreshed throughout the day, so everyone could follow sales and production goals.",
+            "Merged 7 requests from different departments into a single configurable app, including inspections of vehicles and equipment far from the maintenance shop. Less development time, maintenance on schedule.",
+            "Automated exports, data extraction and integrations with the ERP, partners and the fleet tracking system. I even got to control remote equipment with Arduino and Raspberry Pi."
+          ],
+          "skills": [
+            "PHP",
+            "JavaScript",
+            "AngularJS",
+            "Angular",
+            "MySQL",
+            "SOAP",
+            "REST APIs",
+            "Arduino",
+            "Raspberry Pi"
           ]
         }
       ]
     }
   ],
-  "education": "Education and certifications ",
+  "education": "Education and certifications",
   "education-list": [
     {
       "id": 1,
-      "school": "IFET Campus Barbacena",
-      "period": "2009 - 2013",
-      "course": "Degree in Internet Systems",
-      "description": [
-        "Computer Architecture",
-        "Web Page Development",
-        "Mathematical Foundations of Computing",
-        "Basic Business Management",
-        "Instrumental Informatics",
-        "Technical Writing",
-        "Scientific and Technological Research Methodology",
-        "Operating Systems",
-        "Software Engineering",
-        "Programming Logic",
-        "Entrepreneurship",
-        "Project Management",
-        "Computer Networks",
-        "Data Structures I",
-        "Data Structures II",
-        "Programming Language",
-        "Communication Protocols",
-        "Distributed Systems",
-        "Distributed Operating Systems",
-        "Communication Theory",
-        "Web Services",
-        "Visual Programming Language",
-        "Object-Oriented Technology",
-        "Statistics",
-        "Information Systems Management",
-        "Computer Network Projects",
-        "TCP-IP and Routing",
-        "Mobile and Wireless Technologies",
-        "Systems Analysis",
-        "Database Systems Design"
-      ]
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Postgraduate Degree in IT Management",
+      "description": []
     },
     {
       "id": 2,
-      "school": "Uptime",
-      "period": "2015",
-      "course": "Advanced English",
+      "school": "UniFatecie",
+      "period": "2024",
+      "course": "Postgraduate Degree in Digital Storytelling",
       "description": []
     },
     {
@@ -144,91 +165,60 @@
       "school": "UniCesumar",
       "period": "2018 - 2021",
       "course": "Postgraduate Degree in Design Thinking and Creativity in Organizations",
-      "description": [
-        "Research and Practice Universe",
-        "Teaching and Research Methodology",
-        "Introduction to Creativity in the Organizational Environment",
-        "Creative and Collaborative Economy",
-        "Fundamentals of Design Thinking",
-        "Design Thinking in Practice",
-        "Gamification Applied to Business",
-        "Communication and Marketing in the Post-Digital Era",
-        "Agile Business Methodologies and Mind Maps",
-        "Design Thinking Applied to Branding",
-        "New Business Models"
-      ]
+      "description": []
     },
     {
       "id": 5,
-      "school": "UniFatecie",
-      "period": "2024",
-      "course": "Postgraduate Degree in IT Management",
-      "description": [
-        "Entrepreneurship and Innovation",
-        "IT Project Management",
-        "Project Management",
-        "IT Management and Governance",
-        "Process Mapping and Management",
-        "E-Business",
-        "Logical Reasoning",
-        "Computer Networks and Security",
-        "Managerial Information Systems",
-        "Special Topics in IT"
-      ]
-    },
-    {
-      "id": 6,
-      "school": "UniFatecie",
-      "period": "2024",
-      "course": "Postgraduate Degree in Digital Storytelling",
-      "description": [
-        "Art Direction",
-        "Mastering ChatGPT to Boost Productivity",
-        "Digital Photography",
-        "Graphic Visual Language",
-        "Digital Marketing",
-        "Means of Expression",
-        "Creative Process",
-        "Audiovisual Production and Editing",
-        "Screenwriting",
-        "Communication Techniques to Sell Your Idea and Conquer the World"
-      ]
+      "school": "IFET Campus Barbacena",
+      "period": "2009 - 2013",
+      "course": "Degree in Internet Systems",
+      "description": []
     }
   ],
   "contact": "Let's talk",
-  "contact-description": "Want to talk about a project, a role, or something you read here? My inbox is always open, and I also reply on LinkedIn.",
-  "meta-title": "André Souza — Senior Software Engineer",
-  "meta-description": "Software engineer with 12+ years of experience in Node.js, TypeScript, React, React Native and AWS. Technical Coordinator at iScholar. A blog about what I'm studying and building.",
+  "contact-description": "Got an idea, a project or a gnarly problem? Get in touch. I'll bring the engineering and the creativity.",
+  "meta-title": "André Souza | Lead Software Engineer",
+  "meta-description": "Lead Software Engineer in Belo Horizonte, Brazil. Engineering to make it work, creativity to make it different: APIs, integrations and AI automations since 2013.",
   "menu-blog": "Blog",
-  "status": "Technical Coordinator at iScholar",
+  "status": "Belo Horizonte, Brazil · Advanced English",
+  "job-title": "Lead Software Engineer",
+  "hero-stack": "Node.js · TypeScript · React · REST APIs · AWS · AI automations",
   "stats": [
     {
-      "value": 12,
+      "value": "{years}",
+      "prefix": "",
       "suffix": "+",
-      "label": "years writing software"
-    },
-    {
-      "value": 40,
-      "suffix": "+",
-      "label": "internal applications shipped"
+      "label": "years building software"
     },
     {
       "value": 100,
+      "prefix": "",
       "suffix": "k+",
-      "label": "daily active users on the platform"
+      "label": "people a day on the platform I help build"
+    },
+    {
+      "value": 40,
+      "prefix": "$",
+      "suffix": "k+",
+      "label": "a year in costs cut, and growing"
+    },
+    {
+      "value": 3,
+      "prefix": "",
+      "suffix": "x+",
+      "label": "more output from the team I lead, same effort"
     }
   ],
-  "cta-blog": "Read the blog",
+  "cta-blog": "See projects",
   "cta-contact": "Get in touch",
   "scroll-hint": "scroll for more",
-  "latest-posts": "Recent writing",
-  "latest-posts-description": "Notes on what I'm studying, trying out and learning on the job.",
+  "latest-posts": "Latest posts",
   "see-all-posts": "See all posts",
   "copy-email": "Copy email",
   "email-copied": "Email copied",
   "blog-title": "Blog",
-  "blog-description": "Notes on what I'm studying and building: software engineering, applied AI, technical leadership and whatever else comes up along the way.",
-  "blog-empty": "No posts published yet. Check back soon.",
+  "blog-description": "Software engineering, AI, career and the behind-the-scenes of my projects. By André Souza.",
+  "blog-empty": "Nothing here yet. Check back soon.",
   "blog-all": "All",
   "blog-tag-title": "Posts about",
   "reading-time": "min read",
@@ -238,14 +228,76 @@
   "copy": "Copy",
   "copied": "Copied",
   "draft": "Draft",
-  "not-found-title": "Page not found",
-  "not-found-description": "The address may have changed, or the content no longer exists.",
+  "not-found-title": "This page doesn't exist",
+  "not-found-description": "The address changed or the content was taken down. The rest of the site is still in place.",
   "not-found-cta": "Back to home",
-  "footer-note": "Built with Next.js, written in Markdown.",
+  "footer-note": "Engineering and creativity since 2013.",
   "rss": "RSS",
   "skip-to-content": "Skip to content",
   "toggle-theme": "Toggle theme",
   "toggle-menu": "Open menu",
   "back-to-top": "Back to top",
-  "change-language": "Change language"
+  "change-language": "Change language",
+  "projects": "Ideas that got built",
+  "projects-description": "From an API to a game. Where the code is open, there's a link. Where it isn't, I explain how it works.",
+  "project-code": "View code",
+  "project-private": "Private code",
+  "project-open": "Open source",
+  "project-wip": "In progress",
+  "projects-list": [
+    {
+      "id": "pao-nosso",
+      "name": "Pão Nosso",
+      "status": "open",
+      "featured": true,
+      "summary": "Company breakfast, ordered straight from the bakery. A B2B platform where bakeries sign up through an API, publish their catalog and receive orders via webhook.",
+      "highlights": [
+        "Remote MCP server: an assistant like Claude browses the catalog, compares prices across bakeries and places the order on its own, within each API key's spending cap.",
+        "Signed webhooks that don't get lost: the order and its notification are saved in one transaction, and a worker handles delivery with retries and exponential backoff.",
+        "Security from the first line: scrypt passwords, API keys stored as hashes, SSRF protection and idempotent orders.",
+        "Integration tests on a real PostgreSQL database, and a demo that starts the API, the worker and a test bakery with one command."
+      ],
+      "stack": [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "MCP",
+        "Vitest",
+        "Docker"
+      ],
+      "link": "https://github.com/andrefmsouza/pao-nosso-backend"
+    },
+    {
+      "id": "consultorio",
+      "name": "Psychology practice with local AI",
+      "status": "private",
+      "summary": "A patient tracking system built for a real practice. Patient data calls for care, so all the AI runs on the practice's own computer.",
+      "highlights": [
+        "Session audio is transcribed on the machine itself.",
+        "A local language model writes each patient's summary.",
+        "Documents are stored and organized in Google Drive."
+      ],
+      "stack": [
+        "Local AI",
+        "Speech-to-text",
+        "Google Drive API"
+      ]
+    },
+    {
+      "id": "jogo",
+      "name": "A book turning into a game",
+      "status": "wip",
+      "summary": "A book about neurodiversity that I'm turning into a game. The characters have ADHD, autism and other conditions, and the game puts you inside situations many people live through without being understood.",
+      "highlights": [
+        "I'm doing it all solo, from writing to code, with AI as a tool at every step."
+      ],
+      "stack": [
+        "Game design",
+        "Generative AI",
+        "Writing"
+      ]
+    }
+  ]
 }

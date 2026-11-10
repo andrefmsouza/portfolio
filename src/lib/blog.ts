@@ -81,6 +81,11 @@ export const getAllPosts = cache((locale: Locale): PostMeta[] => {
     .sort((a, b) => b.date.localeCompare(a.date));
 });
 
+/** Sem post publicado, o blog some do site: menu, rodapé, sitemap, feed e a própria página. */
+export function hasPosts(locale: Locale) {
+  return getAllPosts(locale).length > 0;
+}
+
 export function getAllTags(locale: Locale) {
   const counts = new Map<string, number>();
   for (const post of getAllPosts(locale)) {

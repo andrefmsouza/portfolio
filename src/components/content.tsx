@@ -84,7 +84,7 @@ export function PostList({ posts, lang, t }: { posts: PostMeta[]; lang: Locale; 
               </span>
             </div>
             <div>
-              <h3 className="font-serif text-3xl leading-[1.1] transition-colors group-hover:text-accent sm:text-4xl">
+              <h3 className="font-display text-xl leading-[1.2] transition-colors group-hover:text-accent sm:text-2xl">
                 {post.draft && (
                   <span className="mr-3 rounded-full border border-accent px-2 py-0.5 align-middle font-mono text-[10px] tracking-wider text-accent uppercase">
                     {t.draft}
@@ -112,7 +112,7 @@ export function PostList({ posts, lang, t }: { posts: PostMeta[]; lang: Locale; 
   );
 }
 
-export function SiteFooter({ lang, t }: { lang: Locale; t: Dictionary }) {
+export function SiteFooter({ lang, t, showBlog }: { lang: Locale; t: Dictionary; showBlog: boolean }) {
   return (
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
@@ -120,12 +120,16 @@ export function SiteFooter({ lang, t }: { lang: Locale; t: Dictionary }) {
           © {new Date().getFullYear()} {site.name}. {t["footer-note"]}
         </p>
         <div className="flex items-center gap-5">
-          <Link href={`/${lang}/blog`} className="link-underline hover:text-foreground">
-            {t["menu-blog"]}
-          </Link>
-          <a href={`/${lang}/blog/feed.xml`} className="inline-flex items-center gap-1.5 hover:text-foreground">
-            <FiRss /> {t.rss}
-          </a>
+          {showBlog && (
+            <>
+              <Link href={`/${lang}/blog`} className="link-underline hover:text-foreground">
+                {t["menu-blog"]}
+              </Link>
+              <a href={`/${lang}/blog/feed.xml`} className="inline-flex items-center gap-1.5 hover:text-foreground">
+                <FiRss /> {t.rss}
+              </a>
+            </>
+          )}
           <SocialLinks />
         </div>
       </div>

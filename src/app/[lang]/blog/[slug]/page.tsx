@@ -109,7 +109,7 @@ export default async function PostPage({ params }: { params: Params }) {
             {post.draft && <span className="text-accent uppercase">{t.draft}</span>}
           </Reveal>
 
-          <h1 className="mt-6 font-serif text-[clamp(2.6rem,6.5vw,5rem)] leading-[1.02] tracking-[-0.015em] text-balance">
+          <h1 className="mt-6 font-display text-[clamp(1.9rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-balance">
             <SplitText text={post.title} stagger={0.03} />
           </h1>
 

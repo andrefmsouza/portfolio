@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowDown, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowDown, FiArrowRight, FiArrowUpRight, FiGithub, FiLock } from "react-icons/fi";
 import { SkillsBubbles } from "@/components/SkillsBubbles";
 import { Timeline, type TimelineEntry } from "@/components/Timeline";
 import { CountUp, Parallax, Reveal, SplitText, Spotlight } from "@/components/motion";
 import { CopyEmailButton } from "@/components/interactive";
 import { JsonLd, PostList, SectionLabel, SocialLinks } from "@/components/content";
-import { getDictionary, type Education, type Locale, type WorkExperience } from "@/lib/i18n";
+import { getDictionary, type Education, type Locale, type Project, type WorkExperience } from "@/lib/i18n";
 import { getAllPosts } from "@/lib/blog";
 import { absoluteUrl, site } from "@/lib/site";
 
 const MARQUEE = [
-  "Node.js", "TypeScript", "React", "React Native", "Next.js", "AWS", "PHP", "Python",
-  "PostgreSQL", "MySQL", "Claude", "OpenAI", "MCP", "Vue.js", "Angular", "Arduino",
+  "Node.js", "TypeScript", "PHP", "React", "Angular", "Next.js", "AWS", "Docker",
+  "MySQL", "PostgreSQL", "Python", "LLMs", "RAG", "MCP", "React Native", "Vue.js",
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     alternates: {
       canonical: `/${lang}`,
-      languages: { "pt-BR": "/pt", en: "/en", "x-default": "/pt" },
+      languages: { "pt-BR": "/pt", en: "/en", "x-default": "/en" },
     },
   };
 }
@@ -40,6 +40,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       title: role.role,
       period: role.period,
       bullets: role.description,
+      tags: role.skills,
     })),
   }));
 
@@ -52,6 +53,13 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   const timelineLabels = { more: t["read-more"], less: t["read-less"] };
 
+  const projects = t["projects-list"] as Project[];
+  const projectBadge: Record<Project["status"], string> = {
+    open: t["project-open"],
+    private: t["project-private"],
+    wip: t["project-wip"],
+  };
+
   return (
     <>
       <JsonLd
@@ -61,10 +69,11 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           name: site.name,
           url: absoluteUrl(`/${lang}`),
           image: absoluteUrl("/images/avatar.jpg"),
-          jobTitle: t.status,
+          jobTitle: t["job-title"],
+          address: { "@type": "PostalAddress", addressLocality: "Belo Horizonte", addressRegion: "MG", addressCountry: "BR" },
+          knowsAbout: ["Node.js", "TypeScript", "React", "REST APIs", "AWS", "PHP", "AI automation", "AI agents", "Large language models"],
           email: `mailto:${site.email}`,
           sameAs: [site.social.linkedin, site.social.github],
-          worksFor: { "@type": "Organization", name: "iScholar" },
         }}
       />
 
@@ -84,13 +93,17 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             </Reveal>
 
             <h1 className="mt-8">
-              <SplitText text={t.hello} className="block font-mono text-sm tracking-wider text-muted uppercase" />
-              <SplitText
-                text={t.name}
-                delay={0.15}
-                className="mt-3 block font-serif text-[clamp(3.6rem,11vw,8.5rem)] leading-[0.92] tracking-[-0.02em]"
-              />
+              <span className="block font-display text-[clamp(2.5rem,6vw,4.25rem)] leading-[1] tracking-[-0.035em]">
+                <SplitText text={t.name} delay={0.1} />
+              </span>
+              <span className="mt-4 block font-display text-[clamp(1.35rem,2.6vw,1.75rem)] leading-tight text-muted">
+                <SplitText text={t.hello} delay={0.3} />
+              </span>
             </h1>
+
+            <Reveal delay={0.4}>
+              <p className="mt-5 font-mono text-sm tracking-wide text-muted">{t["hero-stack"]}</p>
+            </Reveal>
 
             <Reveal delay={0.5}>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">{t.description}</p>
@@ -98,7 +111,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
             <Reveal delay={0.65} className="mt-10 flex flex-wrap items-center gap-3">
               <Link
-                href={`/${lang}/blog`}
+                href="#projects"
                 className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform active:scale-[0.97]"
               >
                 {t["cta-blog"]}
@@ -142,11 +155,12 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       {/* ─── Números ──────────────────────────────────────────────────── */}
       <section id="stats" className="scroll-mt-20 border-y border-line">
-        <div className="mx-auto grid max-w-6xl divide-line px-6 sm:grid-cols-3 sm:divide-x">
+        <div className="mx-auto grid max-w-6xl divide-line px-6 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x">
           {t.stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.1} className="py-10 sm:px-8 sm:first:pl-0">
-              <p className="font-serif text-6xl">
-                <CountUp value={stat.value} suffix={stat.suffix} />
+            <Reveal key={stat.label} delay={i * 0.1} className="py-10 lg:px-8 lg:first:pl-0">
+              <p className="font-display text-4xl">
+                {/* Número anima; texto (ex.: "Milhares") aparece como está */}
+                {typeof stat.value === "number" ? <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} /> : stat.value}
               </p>
               <p className="mt-2 text-sm text-muted">{stat.label}</p>
             </Reveal>
@@ -166,12 +180,91 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </div>
 
+      {/* ─── Projetos ─────────────────────────────────────────────────── */}
+      <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
+        <Reveal>
+          <SectionLabel index="01">{t["menu-projects"]}</SectionLabel>
+          <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.projects}</h2>
+          <p className="mt-6 max-w-2xl leading-relaxed text-muted">{t["projects-description"]}</p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {projects.map((project, i) => (
+            <Reveal
+              key={project.id}
+              delay={i * 0.08}
+              className={`flex flex-col rounded-2xl border border-line p-7 md:p-8 ${project.featured ? "md:col-span-2" : ""}`}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wider text-muted uppercase">
+                  {project.status === "private" && <FiLock aria-hidden />}
+                  {projectBadge[project.status]}
+                </span>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-sm"
+                  >
+                    <FiGithub aria-hidden />
+                    <span className="link-underline">{t["project-code"]}</span>
+                    <FiArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                )}
+              </div>
+
+              <h3 className={`mt-5 font-display leading-tight ${project.featured ? "text-3xl md:text-4xl" : "text-2xl"}`}>
+                {project.name}
+              </h3>
+              <p className={`mt-4 leading-relaxed text-muted ${project.featured ? "max-w-3xl text-lg" : ""}`}>
+                {project.summary}
+              </p>
+
+              {project.highlights.length > 0 && (
+                <ul className={`mt-6 space-y-2.5 text-sm leading-relaxed ${project.featured ? "md:columns-2 md:gap-10" : ""}`}>
+                  {project.highlights.map((item) => (
+                    <li key={item} className="flex gap-3 break-inside-avoid">
+                      <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {project.images && project.images.length > 0 && (
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  {project.images.map((src) => (
+                    <Image
+                      key={src}
+                      src={src}
+                      alt={project.name}
+                      width={800}
+                      height={500}
+                      className="rounded-lg border border-line object-cover"
+                    />
+                  ))}
+                </div>
+              )}
+
+              <ul className="mt-auto flex flex-wrap gap-2 pt-7">
+                {project.stack.map((tech) => (
+                  <li key={tech} className="rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* ─── Habilidades ──────────────────────────────────────────────── */}
       <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
         <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:items-center">
           <Reveal>
-            <SectionLabel index="01">{t["menu-skills"]}</SectionLabel>
-            <h2 className="font-serif text-5xl leading-[1.02] md:text-6xl">{t.skills}</h2>
+            <SectionLabel index="02">{t["menu-skills"]}</SectionLabel>
+            <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.skills}</h2>
             <p className="mt-6 max-w-sm leading-relaxed text-muted">{t["skills-description"]}</p>
           </Reveal>
           <Reveal delay={0.15}>
@@ -183,8 +276,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* ─── Trajetória ───────────────────────────────────────────────── */}
       <section id="journey" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
         <Reveal>
-          <SectionLabel index="02">{t["menu-journey"]}</SectionLabel>
-          <h2 className="font-serif text-5xl leading-[1.02] md:text-6xl">{t.journey}</h2>
+          <SectionLabel index="03">{t["menu-journey"]}</SectionLabel>
+          <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.journey}</h2>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">{t["journey-description"]}</p>
         </Reveal>
 
@@ -200,9 +293,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <section id="writing" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
           <Reveal className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <SectionLabel index="03">{t["menu-blog"]}</SectionLabel>
-              <h2 className="font-serif text-5xl leading-[1.02] md:text-6xl">{t["latest-posts"]}</h2>
-              <p className="mt-6 max-w-md leading-relaxed text-muted">{t["latest-posts-description"]}</p>
+              <SectionLabel index="04">{t["menu-blog"]}</SectionLabel>
+              <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t["latest-posts"]}</h2>
             </div>
             <Link href={`/${lang}/blog`} className="group inline-flex shrink-0 items-center gap-2 text-sm">
               <span className="link-underline">{t["see-all-posts"]}</span>
@@ -220,8 +312,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <Spotlight className="-z-10" />
         <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
           <Reveal>
-            <SectionLabel index={posts.length > 0 ? "04" : "03"}>{t["menu-contact"]}</SectionLabel>
-            <h2 className="font-serif text-6xl leading-none md:text-8xl">
+            <SectionLabel index={posts.length > 0 ? "05" : "04"}>{t["menu-contact"]}</SectionLabel>
+            <h2 className="font-display text-4xl leading-none md:text-6xl">
               {t.contact}
               <span className="text-accent">.</span>
             </h2>
@@ -231,7 +323,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <Reveal delay={0.15} className="mt-14 flex flex-col gap-6">
             <a
               href={`mailto:${site.email}`}
-              className="group inline-flex w-fit items-center gap-3 font-serif text-[clamp(1.8rem,5.5vw,4rem)] leading-none italic"
+              className="group inline-flex w-fit items-center gap-3 font-display text-[clamp(1.4rem,3.5vw,2.5rem)] leading-none"
             >
               <span className="link-underline pb-1">{site.email}</span>
               <FiArrowUpRight className="size-[0.7em] text-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />

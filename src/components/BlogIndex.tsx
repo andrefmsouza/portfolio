@@ -18,7 +18,7 @@ export function BlogIndex({ lang, tag }: { lang: Locale; tag?: string }) {
       </SectionLabel>
 
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-        <h1 className="font-serif text-[clamp(3.5rem,10vw,7.5rem)] leading-[0.92] tracking-[-0.02em]">
+        <h1 className="font-display text-[clamp(2.5rem,6vw,4.25rem)] leading-[1] tracking-[-0.035em]">
           <SplitText text={tag ? `#${tag}` : t["blog-title"]} />
         </h1>
         <a
@@ -28,10 +28,6 @@ export function BlogIndex({ lang, tag }: { lang: Locale; tag?: string }) {
           <FiRss /> {t.rss}
         </a>
       </div>
-
-      <Reveal delay={0.3}>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">{t["blog-description"]}</p>
-      </Reveal>
 
       {tags.length > 0 && (
         <Reveal delay={0.4} className="mt-12 flex flex-wrap gap-2">
