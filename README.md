@@ -31,10 +31,11 @@ updated: 2026-11-02                  # optional
 tags: [nodejs, ai]                   # optional, lowercase
 cover: /images/blog/cover.png        # optional, file in public/images/blog/
 draft: true                          # optional — drafts only show in `npm run dev`
+translation: my-post-in-english      # optional, slug of the same post in the other language
 ---
 ```
 
-- **Translations:** a file with the same name in `pt/` and `en/` is treated as a translation. The language switcher and the `hreflang` tags link them. A post can also exist in only one language.
+- **Translations:** a file with the same name in `pt/` and `en/` is treated as a translation. To give each language its own URL, use different file names and set `translation` to the other file's slug (in one file or both). The language switcher, the `hreflang` tags and the sitemap link them. A post can also exist in only one language.
 - **Images:** put them in `public/images/blog/` and reference `/images/blog/file.png`. Always write the alt text.
 - **Code:** fenced blocks get syntax highlighting (Shiki). Add a title with ` ```ts title="file.ts" ` and highlight lines with ` ```ts {3,5-7} `.
 - **Publishing:** commit and push. The build regenerates the pages, sitemap and RSS feed.

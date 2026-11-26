@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight, FiGithub, FiLinkedin, FiRss } from "react-icons/fi";
 import { formatDate, type Dictionary, type Locale } from "@/lib/i18n";
@@ -71,7 +72,9 @@ export function PostList({ posts, lang, t }: { posts: PostMeta[]; lang: Locale; 
         <li key={post.slug} className="border-b border-line">
           <Link
             href={`/${lang}/blog/${post.slug}`}
-            className="group relative isolate grid gap-3 py-8 transition-colors sm:grid-cols-[9rem_1fr_auto] sm:gap-8"
+            className={`group relative isolate grid gap-3 py-8 transition-colors sm:gap-8 ${
+              post.cover ? "sm:grid-cols-[9rem_12rem_1fr_auto] lg:grid-cols-[9rem_16rem_1fr_auto]" : "sm:grid-cols-[9rem_1fr_auto]"
+            }`}
           >
             <span
               aria-hidden
@@ -83,6 +86,15 @@ export function PostList({ posts, lang, t }: { posts: PostMeta[]; lang: Locale; 
                 {post.readingMinutes} {t["reading-time"]}
               </span>
             </div>
+            {post.cover && (
+              <Image
+                src={post.cover}
+                alt=""
+                width={640}
+                height={360}
+                className="order-first aspect-[16/9] w-full rounded-xl border border-line object-cover sm:order-none"
+              />
+            )}
             <div>
               <h3 className="font-display text-xl leading-[1.2] transition-colors group-hover:text-accent sm:text-2xl">
                 {post.draft && (

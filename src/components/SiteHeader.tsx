@@ -14,8 +14,11 @@ interface Props {
   labels: Record<NavKey, string> & { toggleTheme: string; toggleMenu: string; changeLanguage: string };
   /** Falso enquanto não houver post publicado: o link do blog sai do menu */
   showBlog: boolean;
-  /** Slugs e tags que existem no outro idioma — evita mandar o visitante para um 404 ao trocar de idioma */
-  otherLang: { posts: string[]; tags: string[] };
+  /**
+   * Slug deste idioma → slug da tradução, e tags que existem no outro idioma.
+   * Evita mandar o visitante para um 404 ao trocar de idioma.
+   */
+  otherLang: { posts: Record<string, string>; tags: string[] };
 }
 
 // id da seção na home → item do menu
@@ -85,7 +88,10 @@ export function SiteHeader({ lang, labels, showBlog, otherLang }: Props) {
   const otherHref = (() => {
     const rest = pathname.replace(new RegExp(`^/${lang}`), "");
     const post = rest.match(/^\/blog\/([^/]+)$/);
-    if (post && post[1] !== "tags" && !otherLang.posts.includes(post[1])) return `/${other}/blog`;
+    if (post && post[1] !== "tags") {
+      const translated = otherLang.posts[post[1]];
+      return translated ? `/${other}/blog/${translated}` : `/${other}/blog`;
+    }
     const tag = rest.match(/^\/blog\/tags\/([^/]+)$/);
     if (tag && !otherLang.tags.includes(decodeURIComponent(tag[1]))) return `/${other}/blog`;
     return `/${other}${rest}`;
@@ -104,9 +110,9 @@ export function SiteHeader({ lang, labels, showBlog, otherLang }: Props) {
   const links: { key: NavKey; href: string }[] = [
     { key: "home", href: `/${lang}#home` },
     { key: "projects", href: `/${lang}#projects` },
+    ...(showBlog ? [{ key: "blog" as const, href: `/${lang}/blog` }] : []),
     { key: "skills", href: `/${lang}#skills` },
     { key: "journey", href: `/${lang}#journey` },
-    ...(showBlog ? [{ key: "blog" as const, href: `/${lang}/blog` }] : []),
     { key: "contact", href: `/${lang}#contact` },
   ];
 

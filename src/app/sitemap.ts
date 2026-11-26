@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts, getAllTags, hasTranslation } from "@/lib/blog";
+import { getAllPosts, getAllTags, translatedSlug } from "@/lib/blog";
 import { htmlLang, locales } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/site";
 
@@ -29,7 +29,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     for (const post of posts) {
       const languages = Object.fromEntries(
-        locales.filter((l) => hasTranslation(l, post.slug)).map((l) => [htmlLang[l], absoluteUrl(`/${l}/blog/${post.slug}`)])
+        locales.flatMap((l) => {
+          const s = translatedSlug(lang, post.slug, l);
+          return s ? [[htmlLang[l], absoluteUrl(`/${l}/blog/${s}`)]] : [];
+        })
       );
       entries.push({
         url: absoluteUrl(`/${lang}/blog/${post.slug}`),

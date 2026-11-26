@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/content";
 import { BackToTop } from "@/components/interactive";
 import { MotionProvider } from "@/components/motion";
 import { getDictionary, htmlLang, isLocale, locales, ogLocale, type Locale } from "@/lib/i18n";
-import { getAllPosts, getAllTags, hasPosts } from "@/lib/blog";
+import { getAllPosts, getAllTags, hasPosts, translatedSlug } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
@@ -115,7 +115,12 @@ export default async function RootLayout({
             }}
             showBlog={hasPosts(lang)}
             otherLang={{
-              posts: getAllPosts(other).map((p) => p.slug),
+              posts: Object.fromEntries(
+                getAllPosts(lang).flatMap((p) => {
+                  const s = translatedSlug(lang, p.slug, other);
+                  return s ? [[p.slug, s]] : [];
+                })
+              ),
               tags: getAllTags(other).map((x) => x.tag),
             }}
           />

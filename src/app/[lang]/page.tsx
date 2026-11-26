@@ -259,41 +259,12 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* ─── Habilidades ──────────────────────────────────────────────── */}
-      <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
-        <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:items-center">
-          <Reveal>
-            <SectionLabel index="02">{t["menu-skills"]}</SectionLabel>
-            <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.skills}</h2>
-            <p className="mt-6 max-w-sm leading-relaxed text-muted">{t["skills-description"]}</p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <SkillsBubbles dragHint={t["skills-drag-hint"]} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── Trajetória ───────────────────────────────────────────────── */}
-      <section id="journey" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
-        <Reveal>
-          <SectionLabel index="03">{t["menu-journey"]}</SectionLabel>
-          <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.journey}</h2>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">{t["journey-description"]}</p>
-        </Reveal>
-
-        <h3 className="mt-24 mb-12 font-mono text-xs tracking-wider text-muted uppercase">{t["work-experience"]}</h3>
-        <Timeline entries={work} labels={timelineLabels} />
-
-        <h3 className="mt-28 mb-12 font-mono text-xs tracking-wider text-muted uppercase">{t.education}</h3>
-        <Timeline entries={education} labels={timelineLabels} />
-      </section>
-
       {/* ─── Blog ─────────────────────────────────────────────────────── */}
       {posts.length > 0 && (
         <section id="writing" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
           <Reveal className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <SectionLabel index="04">{t["menu-blog"]}</SectionLabel>
+              <SectionLabel index="02">{t["menu-blog"]}</SectionLabel>
               <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t["latest-posts"]}</h2>
             </div>
             <Link href={`/${lang}/blog`} className="group inline-flex shrink-0 items-center gap-2 text-sm">
@@ -306,6 +277,35 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </Reveal>
         </section>
       )}
+
+      {/* ─── Habilidades ──────────────────────────────────────────────── */}
+      <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
+        <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:items-center">
+          <Reveal>
+            <SectionLabel index={posts.length > 0 ? "03" : "02"}>{t["menu-skills"]}</SectionLabel>
+            <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.skills}</h2>
+            <p className="mt-6 max-w-sm leading-relaxed text-muted">{t["skills-description"]}</p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <SkillsBubbles dragHint={t["skills-drag-hint"]} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── Trajetória ───────────────────────────────────────────────── */}
+      <section id="journey" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:py-36">
+        <Reveal>
+          <SectionLabel index={posts.length > 0 ? "04" : "03"}>{t["menu-journey"]}</SectionLabel>
+          <h2 className="font-display text-3xl leading-[1.1] md:text-4xl">{t.journey}</h2>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">{t["journey-description"]}</p>
+        </Reveal>
+
+        <h3 className="mt-24 mb-12 font-mono text-xs tracking-wider text-muted uppercase">{t["work-experience"]}</h3>
+        <Timeline entries={work} labels={timelineLabels} />
+
+        <h3 className="mt-28 mb-12 font-mono text-xs tracking-wider text-muted uppercase">{t.education}</h3>
+        <Timeline entries={education} labels={timelineLabels} />
+      </section>
 
       {/* ─── Contato ──────────────────────────────────────────────────── */}
       <section id="contact" className="relative isolate scroll-mt-24 overflow-hidden border-t border-line">

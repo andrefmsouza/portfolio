@@ -6,7 +6,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { JsonLd, TagPill } from "@/components/content";
 import { CodeCopyButtons, TableOfContents } from "@/components/interactive";
 import { Reveal, ScrollProgress, SplitText } from "@/components/motion";
-import { getAllPosts, getPost, hasTranslation } from "@/lib/blog";
+import { getAllPosts, getImageSize, getPost, translatedSlug } from "@/lib/blog";
 import { formatDate, getDictionary, htmlLang, locales, ogLocale, type Locale } from "@/lib/i18n";
 import { absoluteUrl, site } from "@/lib/site";
 
@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
   const languages: Record<string, string> = {};
   for (const l of locales) {
-    if (hasTranslation(l, slug)) languages[htmlLang[l]] = `/${l}/blog/${slug}`;
+    const other = translatedSlug(lang, slug, l);
+    if (other) languages[htmlLang[l]] = `/${l}/blog/${other}`;
   }
 
   return {
@@ -37,6 +38,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     robots: post.draft ? { index: false, follow: false } : undefined,
     openGraph: {
       type: "article",
+      siteName: site.name,
       locale: ogLocale[lang],
       url: `/${lang}/blog/${slug}`,
       title: post.title,
@@ -45,7 +47,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       modifiedTime: post.updated ?? post.date,
       authors: [site.name],
       tags: post.tags,
-      ...(post.cover ? { images: [{ url: post.cover }] } : {}),
+      ...(post.cover ? { images: [{ url: post.cover, alt: post.title, ...getImageSize(post.cover) }] } : {}),
     },
   };
 }

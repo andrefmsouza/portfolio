@@ -27,6 +27,8 @@ export type PostMeta = {
   tags: string[];
   cover?: string;
   draft: boolean;
+  /** Slug do mesmo post no outro idioma, quando a URL traduzida for diferente */
+  translation?: string;
   readingMinutes: number;
 };
 
@@ -60,6 +62,7 @@ function readPostFile(locale: Locale, slug: string) {
     tags: Array.isArray(data.tags) ? data.tags.map((t: unknown) => String(t).toLowerCase()) : [],
     cover: data.cover ? String(data.cover) : undefined,
     draft: Boolean(data.draft),
+    translation: data.translation ? String(data.translation) : undefined,
     readingMinutes: Math.max(1, Math.round(readingTime(content).minutes)),
   };
 
@@ -94,9 +97,48 @@ export function getAllTags(locale: Locale) {
   return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([tag, count]) => ({ tag, count }));
 }
 
-/** O mesmo nome de arquivo em content/blog/pt e content/blog/en = tradução do mesmo post. */
-export function hasTranslation(locale: Locale, slug: string) {
-  return getAllPosts(locale).some((p) => p.slug === slug);
+/**
+ * Largura e altura de uma imagem em public/ (JPEG ou PNG), lidas do próprio arquivo.
+ * Vão nas tags og:image:width/height para WhatsApp, LinkedIn etc. montarem a prévia grande.
+ */
+export function getImageSize(publicPath: string): { width: number; height: number } | undefined {
+  try {
+    const buf = fs.readFileSync(path.join(process.cwd(), "public", publicPath));
+    if (buf.readUInt32BE(0) === 0x89504e47) {
+      return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+    }
+    if (buf[0] === 0xff && buf[1] === 0xd8) {
+      let i = 2;
+      while (i < buf.length) {
+        if (buf[i] !== 0xff) return undefined;
+        const marker = buf[i + 1];
+        // SOF0..SOF15, menos DHT (C4), JPG (C8) e DAC (CC)
+        if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+          return { width: buf.readUInt16BE(i + 7), height: buf.readUInt16BE(i + 5) };
+        }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch {
+    // imagem externa ou ausente: segue sem as dimensões
+  }
+  return undefined;
+}
+
+/**
+ * Slug da tradução de um post em outro idioma, ou undefined se não houver.
+ * Liga pelo campo `translation` do frontmatter (em qualquer um dos dois arquivos);
+ * sem ele, vale o mesmo nome de arquivo em content/blog/pt e content/blog/en.
+ */
+export function translatedSlug(from: Locale, slug: string, to: Locale): string | undefined {
+  if (from === to) return slug;
+  const source = getAllPosts(from).find((p) => p.slug === slug);
+  const targets = getAllPosts(to);
+  const match =
+    (source?.translation && targets.find((p) => p.slug === source.translation)) ||
+    targets.find((p) => p.translation === slug) ||
+    (!source?.translation ? targets.find((p) => p.slug === slug && !p.translation) : undefined);
+  return match ? match.slug : undefined;
 }
 
 function collectHeadings(headings: Heading[]) {
