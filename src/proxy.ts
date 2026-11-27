@@ -31,6 +31,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Ignora internos do Next e qualquer arquivo com extensão (imagens, sitemap.xml, robots.txt, feed.xml...)
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  // Ignora internos do Next, os envios do Vercel Analytics (/_vercel/insights)
+  // e qualquer arquivo com extensão (imagens, sitemap.xml, robots.txt, feed.xml...)
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

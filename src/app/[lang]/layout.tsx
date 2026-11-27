@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -128,6 +129,7 @@ export default async function RootLayout({
           <SiteFooter lang={lang} t={t} showBlog={hasPosts(lang)} />
           <BackToTop label={t["back-to-top"]} />
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   );
