@@ -183,32 +183,6 @@
   "status": "Belo Horizonte, Brazil · Advanced English",
   "job-title": "Lead Software Engineer",
   "hero-stack": "Node.js · TypeScript · React · REST APIs · AWS · AI automations",
-  "stats": [
-    {
-      "value": "{years}",
-      "prefix": "",
-      "suffix": "+",
-      "label": "years building software"
-    },
-    {
-      "value": 100,
-      "prefix": "",
-      "suffix": "k+",
-      "label": "people a day on the platform I help build"
-    },
-    {
-      "value": 40,
-      "prefix": "$",
-      "suffix": "k+",
-      "label": "a year in costs cut, and growing"
-    },
-    {
-      "value": 3,
-      "prefix": "",
-      "suffix": "x+",
-      "label": "more output from the team I lead, same effort"
-    }
-  ],
   "cta-blog": "See projects",
   "cta-contact": "Get in touch",
   "scroll-hint": "scroll for more",

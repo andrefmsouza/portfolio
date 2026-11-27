@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import {
-  animate,
   motion,
   MotionConfig,
-  useInView,
   useMotionValue,
   useScroll,
   useSpring,
@@ -75,32 +73,6 @@ export function SplitText({
           </motion.span>
         </span>
       ))}
-    </span>
-  );
-}
-
-/** Número que conta do zero até o valor quando aparece na tela */
-export function CountUp({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  // Começa no valor final para o HTML do servidor (e o Google) verem o número certo
-  const [display, setDisplay] = useState(value);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: EASE,
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, value]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {prefix}
-      {display}
-      {suffix}
     </span>
   );
 }

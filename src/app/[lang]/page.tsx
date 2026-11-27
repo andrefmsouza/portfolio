@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FiArrowDown, FiArrowRight, FiArrowUpRight, FiGithub, FiLock } from "react-icons/fi";
 import { SkillsBubbles } from "@/components/SkillsBubbles";
 import { Timeline, type TimelineEntry } from "@/components/Timeline";
-import { CountUp, Parallax, Reveal, SplitText, Spotlight } from "@/components/motion";
+import { Parallax, Reveal, SplitText, Spotlight } from "@/components/motion";
 import { CopyEmailButton } from "@/components/interactive";
 import { JsonLd, PostList, SectionLabel, SocialLinks } from "@/components/content";
 import { getDictionary, type Education, type Locale, type Project, type WorkExperience } from "@/lib/i18n";
@@ -145,7 +145,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
 
         <a
-          href="#stats"
+          href="#projects"
           className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-foreground md:flex"
         >
           <FiArrowDown className="animate-bounce" />
@@ -153,23 +153,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </a>
       </section>
 
-      {/* ─── Números ──────────────────────────────────────────────────── */}
-      <section id="stats" className="scroll-mt-20 border-y border-line">
-        <div className="mx-auto grid max-w-6xl divide-line px-6 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x">
-          {t.stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.1} className="py-10 lg:px-8 lg:first:pl-0">
-              <p className="font-display text-4xl">
-                {/* Número anima; texto (ex.: "Milhares") aparece como está */}
-                {typeof stat.value === "number" ? <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} /> : stat.value}
-              </p>
-              <p className="mt-2 text-sm text-muted">{stat.label}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* ─── Faixa de tecnologias ─────────────────────────────────────── */}
-      <div aria-hidden className="overflow-hidden border-b border-line py-5 [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+      <div aria-hidden className="overflow-hidden border-y border-line py-5 [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
         <div className="marquee-track flex w-max gap-10 font-mono text-sm text-muted">
           {[...MARQUEE, ...MARQUEE].map((item, i) => (
             <span key={i} className="flex items-center gap-10">
