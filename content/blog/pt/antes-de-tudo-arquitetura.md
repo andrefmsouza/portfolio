@@ -96,6 +96,4 @@ Antes de qualquer linha de código, o projeto já tinha decidido:
 - **engine:** Godot, porque a IA trabalha nos arquivos de texto dele;
 - **ferramentas:** Gemini, Hunyuan3D, Blender e Mixamo em volta do Claude.
 
-No próximo post, conto como os personagens saíram de uma imagem e viraram modelos 3D animados, e por que o Miguel precisou de três versões.
-
 *Logo do Godot na capa: Andrea Calabró, licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*

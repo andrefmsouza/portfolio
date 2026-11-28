@@ -96,6 +96,4 @@ Before a single line of code, the project had already decided:
 - **engine:** Godot, because the AI works on its text files;
 - **tools:** Gemini, Hunyuan3D, Blender and Mixamo around Claude.
 
-In the next post, I'll show how the characters went from a single image to animated 3D models, and why Miguel took three versions.
-
 *Godot logo on the cover: Andrea Calabró, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
