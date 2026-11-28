@@ -75,3 +75,5 @@ Quando vi que dava para fazer isso com o Opus e com outras inteligências artifi
 Nos próximos posts, vou contar como foi construir essa primeira parte. Vou falar de design de jogos, de roteiro, de storytelling (assunto de outra pós-graduação que fiz depois), de programação e de tudo o que envolve construir jogos, livros e animações.
 
 Espero que você aproveite essa jornada comigo, que está só começando.
+
+*A primeira porta do Contos do Escuro já pode ser jogada: [baixe o jogo de graça](https://drive.google.com/drive/folders/1kOCec_mdHU-scv78436-_x3Urg1ltAe9?usp=sharing).*

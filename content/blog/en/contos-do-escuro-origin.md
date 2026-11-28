@@ -75,3 +75,5 @@ When I saw that I could do this with Opus and other AI tools (which I'll introdu
 In the next posts, I'll tell you how I built this first part. I'll talk about game design, scriptwriting, storytelling (the subject of another postgraduate program I did later), programming and everything involved in building games, books and animations.
 
 I hope you enjoy this journey with me. It's only just beginning.
+
+*The first door of Contos do Escuro is ready to play: [download the game for free](https://drive.google.com/drive/folders/1kOCec_mdHU-scv78436-_x3Urg1ltAe9?usp=sharing).*

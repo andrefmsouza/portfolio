@@ -96,4 +96,6 @@ Before a single line of code, the project had already decided:
 - **engine:** Godot, because the AI works on its text files;
 - **tools:** Gemini, Hunyuan3D, Blender and Mixamo around Claude.
 
+*The first door of Contos do Escuro is ready to play: [download the game for free](https://drive.google.com/drive/folders/1kOCec_mdHU-scv78436-_x3Urg1ltAe9?usp=sharing).*
+
 *Godot logo on the cover: Andrea Calabró, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*

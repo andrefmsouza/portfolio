@@ -109,3 +109,5 @@ Essa primeira experiência eu até postei no meu Instagram, e fiquei muito feliz
 E isso com o Claude Opus 5.5 no plano Pro, o mais barato. Não precisei usar o Fable nem outra inteligência artificial mais cara, nem pagar nada a mais. Usei só o plano que eu já tinha, com tudo bem definido no meu computador.
 
 Uma vez que você define a arquitetura do que quer, tem os programas todos instalados e põe a inteligência artificial para rodar, você economiza muito token e muito tempo, se souber onde quer chegar. Uma coisa que não entra nessa conta é o tempo em que tudo isso já estava na minha cabeça, com a história montada. Eu não comecei do zero absoluto. Mas, quando você já sabe o que quer e tem essa bagagem, tudo dali para frente é muito mais rápido e muito mais certeiro. Nessas três horas, eu já tive o resultado mínimo para ver que o jogo poderia sair.
+
+*A primeira porta do Contos do Escuro já pode ser jogada: [baixe o jogo de graça](https://drive.google.com/drive/folders/1kOCec_mdHU-scv78436-_x3Urg1ltAe9?usp=sharing).*

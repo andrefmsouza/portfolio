@@ -96,4 +96,6 @@ Antes de qualquer linha de código, o projeto já tinha decidido:
 - **engine:** Godot, porque a IA trabalha nos arquivos de texto dele;
 - **ferramentas:** Gemini, Hunyuan3D, Blender e Mixamo em volta do Claude.
 
+*A primeira porta do Contos do Escuro já pode ser jogada: [baixe o jogo de graça](https://drive.google.com/drive/folders/1kOCec_mdHU-scv78436-_x3Urg1ltAe9?usp=sharing).*
+
 *Logo do Godot na capa: Andrea Calabró, licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*

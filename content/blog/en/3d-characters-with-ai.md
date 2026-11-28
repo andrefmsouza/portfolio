@@ -109,3 +109,5 @@ I even posted this first experience on my Instagram, and I was really happy to h
 And that was with Claude Opus 5.5 on the Pro plan, the cheapest one. I didn't need Fable or any other more expensive AI, and I didn't pay anything extra. I only used the plan I already had, with everything well set up on my computer.
 
 Once you define the architecture of what you want, have all the programs installed and put the AI to work, you save a lot of tokens and a lot of time, as long as you know where you want to end up. One thing that doesn't show up in that count is the time all of this had already spent in my head, with the story already built. I didn't start from absolute zero. But when you already know what you want and have that background, everything from there on is much faster and much more on target. In those three hours, I already had the minimum result I needed to see that the game could happen.
+
+*The first door of Contos do Escuro is ready to play: [download the game for free](https://drive.google.com/drive/folders/1kOCec_mdHU-scv78436-_x3Urg1ltAe9?usp=sharing).*
